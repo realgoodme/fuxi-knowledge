@@ -302,7 +302,14 @@ body {
   margin-top: 0;
 }
 
-/* ═══ 最近更新 ═══ */
+/* ═══ 修复移动端侧边栏残影 ═══ */
+@media screen and (max-width: 1219px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+/* ═══ 编译层计数更新 ═══ */
 .zh-recent {
   grid-column: 1 / -1;
   background: linear-gradient(135deg, var(--surface-alt), #fcf9f5);
