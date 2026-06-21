@@ -1,0 +1,6 @@
+site/
+docs/
+hermes-nav-plan.md
+__pycache__/
+*.pyc
+.DS_Store
