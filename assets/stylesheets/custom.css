@@ -236,7 +236,7 @@ body {
 .md-tabs__link {
   font-size: 0.75rem;
   opacity: 0.9;
-  color: #eceff1;
+  color: #cfd8dc;
 }
 
 .md-tabs__link--active {
@@ -368,4 +368,69 @@ body {
 
 .md-typeset hr {
   border-bottom: 1px solid #e8e5e0;
+}
+
+/* ═══ 最近更新 ═══ */
+.zh-recent {
+  background: #faf9f7;
+  border: 1px solid #e8e5e0;
+  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  margin-bottom: 0.8rem;
+}
+
+.zh-recent h3 {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin: 0 0 0.4rem 0;
+  color: #1a1a1a;
+}
+
+.zh-recent ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.zh-recent ul li {
+  font-size: 0.8rem;
+  margin: 0.08rem 0;
+  line-height: 1.5;
+}
+
+.zh-recent ul li a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.zh-recent ul li a:hover {
+  color: #d97706;
+  border-bottom-color: #d97706;
+}
+
+.zh-recent ul li .tag {
+  font-size: 0.7rem;
+  color: #999;
+  margin-left: 0.3rem;
+}
+
+/* ═══ 笔记分组标题 ═══ */
+.zh-notes strong {
+  display: block;
+  font-size: 0.82rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.15rem;
+  color: #555;
+  font-weight: 600;
+}
+
+.zh-notes strong:first-child {
+  margin-top: 0;
+}
+
+/* ═══ 编译层计数更新 ═══ */
+.zh-hero-meta .zh-stat-updated {
+  color: #d97706;
 }
