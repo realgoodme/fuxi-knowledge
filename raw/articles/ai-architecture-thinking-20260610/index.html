@@ -1,0 +1,2520 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="思想仓库 - 朴散原创，沉淀写作素材与技术思考">
+      
+      
+      
+        <link rel="canonical" href="https://realgoodme.github.io/fuxi-knowledge/raw/articles/ai-architecture-thinking-20260610/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」 - 思想仓库</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/custom.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#08ai-mvp-ai" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="思想仓库" class="md-header__button md-logo" aria-label="思想仓库" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            思想仓库
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue-grey" data-md-color-accent="orange"  aria-label="切换到夜间模式"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="切换到夜间模式" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="orange"  aria-label="切换到日间模式"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="切换到日间模式" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../pusanz-2025-summary/" class="md-tabs__link">
+          
+  
+  
+  朴散原创
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../jinxuejie/" class="md-tabs__link">
+          
+  
+  
+  古文经典
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../notes/tushuguan-5xiaoshi-dinglv/" class="md-tabs__link">
+          
+  
+  
+  笔记摘要
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../wiki/tushuguan-5xiaoshi-dinglv/" class="md-tabs__link">
+          
+  
+  
+  编译层
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="思想仓库" class="md-nav__button md-logo" aria-label="思想仓库" data-md-component="logo">
+      
+  <img src="../../../assets/images/logo.png" alt="logo">
+
+    </a>
+    思想仓库
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    朴散原创
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    朴散原创
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pusanz-2025-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一个笨人的2025年年终总结
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../wo-yu-wo-zhouxuan-jiu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    我与我周旋久
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../xingzi-ruanruo-kao-jingcha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知乎问答：性子比较软弱的人适合做警察吗？
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lamo-de-lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    拉磨的驴
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../zhi-fensi-qing-quguan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    致粉丝，请取关（2021，涤生笔名）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../suibi-shiyijianlun-xiaogan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随笔——读《实践论》小感
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sandian-sikao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三点思考
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ergou-yiyefengliu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的一夜风流
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ergou-qingchun-zhi-lian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的清纯之恋
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ergou-qianli-fuai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的千里赴爱
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ergou-di-4ci-zhuanzhang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的第4次转账：5天被骗4次21万
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ergou-gonganju-dianlai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的幸福生活之公安局的来电
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    古文经典
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    古文经典
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jinxuejie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    进学解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eyuwen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    鳄鱼文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../shierlang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    祭十二郎文
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kongyiji/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    孔乙己
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    笔记摘要
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    笔记摘要
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/tushuguan-5xiaoshi-dinglv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    原来"图书馆5小时定律"是真的！（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/wangfang-seti-xingxinhao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    外星人信号可能早已来过，只是我们并不知情……（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/pusanz-2025-summary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    一个笨人的2025年年终总结（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/lamo-de-lv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    拉磨的驴（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/wo-yu-wo-zhouxuan-jiu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    我与我周旋久（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/xingzi-ruanruo-kao-jingcha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    知乎问答：性子比较软弱的人适合做警察吗？（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/zhi-fensi-qing-quguan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    致粉丝，请取关（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/suibi-shiyijianlun-xiaogan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    随笔——读《实践论》小感（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/sandian-sikao/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    三点思考（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/ergou-yiyefengliu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的一夜风流（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/ergou-qingchun-zhi-lian/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的清纯之恋（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/ergou-qianli-fuai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的千里赴爱（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/ergou-di-4ci-zhuanzhang/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的第4次转账（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../notes/ergou-gonganju-dianlai/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗的幸福生活之公安局的来电（笔记）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    编译层
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    编译层
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/tushuguan-5xiaoshi-dinglv/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    图书馆5小时定律
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/xingdong-danyuan-siwei/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行动单元思维
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/waixing-xinhao-seti/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SETI 与外星信号探测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/fanchangshi-xiezuo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    反常识写作方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/shijianlun/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实践论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../wiki/ergou-xilie/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    二狗系列 —— 反诈故事写作方法论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        01 架构思维是什么，不是什么
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="01 架构思维是什么，不是什么">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        架构思维 ≠ 写代码
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        类比：盖大楼前的设计图纸
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#02" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        02 普通人画架构图的最小知识：进、存、取三问
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="02 普通人画架构图的最小知识：进、存、取三问">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        进——东西从哪来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存——东西存哪、怎么组织
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取——东西怎么出去、给谁用
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        通用模板长这样
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#03-fuxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        03 用 fuxi 走一遍：从一页纸到完整数据流
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="03 用 fuxi 走一遍：从一页纸到完整数据流">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#07-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先把 07 的一页纸 MVP 翻回来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuxi" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        进：fuxi 收什么、怎么进来
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuxi_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存：fuxi 怎么分层组织
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuxi_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        取：fuxi 怎么输出（三条流）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完整数据流图
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        跟 07 一页纸的对照
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#04" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        04 普通人最容易踩的四个架构坑
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="04 普通人最容易踩的四个架构坑">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑一：先想功能，后想流
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑二：只想「进」不想「取」（最常见，最致命）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑三：抽象层级混乱
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        坑四：一上来就想完美架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#05-mvp" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        05 进阶：产品做 MVP，架构想得更全
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="05 进阶：产品做 MVP，架构想得更全">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        还是那栋大楼：先盖 10 层，但能往上加
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fuxi_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fuxi 就是这么干的
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        楼更得建得牢：数据别丢、错了能回退
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        功能克制，架构算两条
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#06-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        06 动手：让 AI 帮你出第一版架构
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="06 动手：让 AI 帮你出第一版架构">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第一步：把料喂给 AI，让它出初稿
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第二步：对着三问审，哪不对让 AI 改
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ai_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        第三步：让 AI 整理成一份「架构文档」存好
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#07_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        07 小结
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="08ai-mvp-ai">08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」</h1>
+<blockquote>
+<p>📚 <strong>系列导航</strong>：上一篇 [07.产品思维] 帮你产出了一份「一页纸 MVP 定义」。这一篇带你把这张纸<strong>理清成一份能让 AI 照着干的架构</strong>——架构思维。</p>
+</blockquote>
+<p>兄弟们，今天聊一件反直觉的事——上一篇我们做完了一页纸 MVP，你是不是觉得可以撸袖子开干了？</p>
+<p><strong>先别。</strong></p>
+<p>我自己做 fuxi 知识库时就吃过这亏。最早我也觉得 06 想清楚意义、07 列好 MVP 就够了，功能也想得明明白白——丢个链接、让 AI 写摘要、存成文件，多简单。</p>
+<p>结果做到第三周，存了大几十条素材，<strong>真要写文章去翻的时候，傻眼了</strong>：我知道这堆文件里肯定有我要的东西，但<strong>怎么找？</strong> 关键词搜？我当时记的词跟现在想搜的词对不上。一条条翻？大几十条还行，几百条就废了。</p>
+<p>那一刻我才意识到——<strong>我只想清楚了「东西怎么进来」，根本没想「东西怎么出去」</strong>。存了一堆，但「取」那一步是个黑洞。</p>
+<p>这就是没有架构思维的代价：<strong>功能都对，但东西走不通</strong>。</p>
+<p>所以这一篇，咱们专门补这一课——<strong>架构思维</strong>。它跟产品思维的关系是这样的：</p>
+<blockquote>
+<p><strong>产品思维回答「我要做什么」，架构思维回答「东西怎么走」。</strong></p>
+</blockquote>
+<p>不写一行代码，但走完之后，你手上会有一张属于你产品架构的「数据流图」——下一篇 09 选具体技术，就是照着这张图选。</p>
+<p><strong>看完这一篇，你会拿到：</strong></p>
+<ul>
+<li>一套普通人 1 小时就能学会的架构思维框架（<strong>进、存、取</strong>三问）</li>
+<li>一张 fuxi 知识库的完整数据流图（看它怎么把零散笔记「编译」成能用的知识，含往回织 + 三条「取」的流）</li>
+<li>一份属于你自己产品的架构文档（动手环节让 AI 帮你出初稿、你审改）</li>
+</ul>
+<hr />
+<h2 id="01">01 架构思维是什么，不是什么</h2>
+<p>先讲清楚，免得你跟产品思维混了。</p>
+<h3 id="_1">架构思维 ≠ 写代码</h3>
+<p>很多人一听「架构」两个字就犯怵——这不是程序员的活吗？我又不写代码。</p>
+<p><strong>说句实话，AI 之前架构确实是工程师的活</strong>，因为它跟具体技术绑死——用什么数据库、用什么框架、怎么部署。但 <strong>AI 时代，写代码这一层已经被 Claude Code / Codex 接管了</strong>，普通人真正稀缺的，反而是「<strong>想清楚东西怎么走</strong>」的能力。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>产品思维</th>
+<th>架构思维</th>
+<th>技术思维（下一篇）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>回答</strong></td>
+<td>我要做什么</td>
+<td>东西怎么走</td>
+<td>用什么实现</td>
+</tr>
+<tr>
+<td><strong>产出</strong></td>
+<td>一页纸 MVP</td>
+<td>一张数据流图</td>
+<td>一份技术选型表</td>
+</tr>
+<tr>
+<td><strong>是不是技术活</strong></td>
+<td>不是</td>
+<td><strong>不是</strong></td>
+<td>是</td>
+</tr>
+</tbody>
+</table>
+<p>看到了吗？<strong>架构思维卡在产品和技术中间</strong>，是一座桥——没有它，你的 MVP 永远落不到代码。</p>
+<h3 id="_2">类比：盖大楼前的设计图纸</h3>
+<p>盖一层平房，想到哪砌到哪就行。但要盖 20 层，你敢直接搬砖吗？<strong>得先有一张设计图纸</strong>——楼分几层、每层干啥，水电怎么通到每一户，人怎么从大堂走到各楼层。<strong>这张图纸，就是架构。</strong></p>
+<p>这里顺便把产品思维、架构思维、技术思维的区别说清，让你提前心里有个数：</p>
+<ul>
+<li><strong>产品思维</strong>：决定你要的是平房还是大楼；而 MVP 是——即便你要盖的是大楼，也得先把第一层盖起来住人；</li>
+<li><strong>架构思维</strong>：这栋楼的总设计师，定下东西在楼里怎么走、能盖到多少层、牢不牢固；</li>
+<li><strong>技术思维</strong>：哪一层用电钻、什么阶段上吊车——具体怎么施工。</li>
+</ul>
+<p>做产品一模一样：</p>
+<ul>
+<li>做个小工具（一个 Prompt、一个脚本）——不用架构，想到哪做到哪；</li>
+<li>但你要做的是一个<strong>有进、有存、有取的「系统」</strong>（知识库就是），那就跟盖高楼一样：<strong>先画图纸，再搬砖</strong>。</li>
+</ul>
+<p>而这张图纸，要画清楚两样东西：</p>
+<ul>
+<li><strong>楼分几层、每层干啥</strong> → 对应「存」（东西存哪、怎么分层）</li>
+<li><strong>水电、人怎么在楼里走</strong> → 对应「进」和「取」（东西从哪进、怎么走到要用的人手里）</li>
+</ul>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：架构思维不是技术活，是「动手前先想清楚那张设计图纸」——小工具不用，但凡做个能跑的系统都得先想。而且 AI 时代不用真画图：图纸以前给人看，现在给 AI 看，一份清晰的架构文档，AI 就全懂了。</p>
+</blockquote>
+<hr />
+<h2 id="02">02 普通人画架构图的最小知识：进、存、取三问</h2>
+<p>好，现在动手。普通人画架构图，<strong>只需要回答三个问题</strong>——</p>
+<blockquote>
+<p><strong>进</strong>：东西从哪来？
+<strong>存</strong>：东西存哪、怎么组织？
+<strong>取</strong>：东西怎么出去、给谁用？</p>
+</blockquote>
+<p>就这三个字。听起来简单到你怀疑，但<strong>大多数失败的产品架构，都是这三问里至少漏了一问</strong>。</p>
+<h3 id="_3">进——东西从哪来</h3>
+<p>具体问三层：</p>
+<ol>
+<li><strong>来源</strong>：链接、文件、用户手动输入、定时拉取、外部接口推送……</li>
+<li><strong>触发方式</strong>：用户主动丢进来 / AI 定时去抓 / 别的系统推过来</li>
+<li><strong>格式</strong>：纯文本、PDF、网页、图片、视频、音频</li>
+</ol>
+<p>举个例子——做一个周报工具：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>答案</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>来源</strong></td>
+<td>我每天的工作日志</td>
+</tr>
+<tr>
+<td><strong>触发</strong></td>
+<td>每周五下午定时整理</td>
+</tr>
+<tr>
+<td><strong>格式</strong></td>
+<td>一段一段的文字</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">存——东西存哪、怎么组织</h3>
+<p>这一层别想数据库——那是 09 技术思维要回答的。<strong>架构思维只回答「分几层、每层存什么」</strong>。</p>
+<p>经典分层是三层（你 06 篇见过这套）：</p>
+<ul>
+<li><strong>原料层（raw）</strong>：原始资料，只读不改，事实来源</li>
+<li><strong>加工层</strong>：AI 处理过的结构化成品，可读可写</li>
+<li><strong>索引层（index）</strong>：导航目录，方便快速定位</li>
+</ul>
+<p><strong>为什么要分层？</strong> 因为不分层会出大问题——你 AI 处理一遍写到文件里，再处理一遍又覆盖了，<strong>原料就没了</strong>，错了就没法回退。<strong>分层 = 给数据上保险</strong>。</p>
+<h3 id="_5">取——东西怎么出去、给谁用</h3>
+<p><strong>这是普通人最容易漏的一问</strong>——我开头讲的 fuxi 早期翻车，就是只想了进和存，没想取。</p>
+<p>「取」也有三层：</p>
+<ol>
+<li><strong>谁来取</strong>：你自己 / AI 自动触发 / 别人通过分享链接</li>
+<li><strong>什么时候取</strong>：随手问 / 定时推送 / 触发某条件</li>
+<li><strong>取什么形式</strong>：自然语言问答 / 一份报告 / 一条通知</li>
+</ol>
+<p><strong>铁律</strong>：<strong>画架构图先画「取」</strong>——倒推。你倒着想清楚最终输出什么样，才知道前面要存什么、怎么存。</p>
+<h3 id="_6">通用模板长这样</h3>
+<p>下面这张是「进存取」的通用模板图——后面所有架构图，都是这张图的变种：</p>
+<p><img alt="进存取通用模板" src="../_assets/08-progress-store-fetch-template@2x.png" /></p>
+<p><strong>怎么读这张图</strong>：左边是「进」（输入源），中间是「存」（分层结构），右边是「取」（输出方式）。三块串起来就是一个完整的产品数据流。</p>
+<!-- mermaid source（内部保留，不发公众号）
+flowchart LR
+    A1[输入源 1] -->
+<p>B1[原料层]
+    A2[输入源 2] --&gt; B1
+    B1 --&gt; B2[加工层]
+    B2 --&gt; B3[索引层]
+    B3 --&gt; C1[输出 1：问答]
+    B3 --&gt; C2[输出 2：推送]
+    B3 --&gt; C3[输出 3：触发动作]
+--&gt;</p>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：进、存、取三问——<strong>先倒推「取」，再想「存」，最后定「进」</strong>，这是普通人画架构图的最小知识。</p>
+</blockquote>
+<hr />
+<h2 id="03-fuxi">03 用 fuxi 走一遍：从一页纸到完整数据流</h2>
+<p>光看模板不够，咱们拿 07 篇定的 fuxi 一页纸 MVP，<strong>实打实走一遍架构思维</strong>。</p>
+<p>先说清楚——<strong>fuxi 只是个例子，你要学的是「进存取三问怎么走」这套动作</strong>。你自己的产品分几层、有几条流，都会跟 fuxi 不一样，照着方法走你自己的就行。</p>
+<h3 id="07-mvp">先把 07 的一页纸 MVP 翻回来</h3>
+<table>
+<thead>
+<tr>
+<th>格子</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>用户</td>
+<td>我自己</td>
+</tr>
+<tr>
+<td>问题</td>
+<td>素材散落、选题时找不到、想发散没人帮、AI 完全没参与</td>
+</tr>
+<tr>
+<td>输入</td>
+<td>我手动丢进去的链接、想法</td>
+</tr>
+<tr>
+<td>处理</td>
+<td>Claude 读完 → 写带立场的摘要 → 更新索引 → 反向更新相关条目</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>一个能问、能查、能告诉我「今天可以写哪篇」的本地知识库</td>
+</tr>
+<tr>
+<td>不做什么</td>
+<td>不做数据库、不做配图、不做协作、不做多端、不做音视频识别</td>
+</tr>
+</tbody>
+</table>
+<p>下面把这张表，用「进存取」三问展开——</p>
+<h3 id="fuxi">进：fuxi 收什么、怎么进来</h3>
+<ul>
+<li><strong>来源</strong>：链接（GitHub / X / 公众号）、PDF、想法</li>
+<li><strong>触发</strong>：我手动丢</li>
+<li><strong>格式</strong>：URL / PDF 文件 / 自然语言</li>
+</ul>
+<p>注意一个细节——<strong>「想法」也是输入</strong>。我每天冒的产品脑洞、写作灵感，不是别人给的、是自己脑子里冒的，<strong>也得算知识库的输入源</strong>——否则它就只是个外部资料库，不是「第二大脑」。</p>
+<h3 id="fuxi_1">存：fuxi 怎么分层组织</h3>
+<p>这一层是 fuxi 跟普通收藏夹真正拉开差距的地方。06 篇讲过卡帕西那套骨架，fuxi 在它基础上把「存」分成了四层（<strong>你的产品不一定四层，看需要</strong>）——目录名也不用记，记住每层装什么就行：</p>
+<ul>
+<li><strong>原料层</strong>：抓回来的原文、PDF，原样存着、只读不改——这是「事实来源」，AI 哪天判断错了，能翻回来核对</li>
+<li><strong>笔记层</strong>：每来一条素材，AI 写一篇<strong>带自己判断的读书笔记</strong>；我自己冒的想法也单独存一篇（这种没有外部链接，写下来的字本身就是知识）</li>
+<li><strong>编译层</strong>：<strong>fuxi 的灵魂就在这一层</strong>。它不是把笔记一篇篇堆着，而是把<strong>好几篇聊同一件事的笔记，合并成一页「结论」</strong>；同一个产品、同一个人，所有提到的地方也都汇总成一页。（这两种「结论页」fuxi 里分别叫「主题页」「实体页」，图上会出现，记不住没关系）</li>
+<li><strong>选题层</strong>：把上面那页「结论」，直接变成「这周能写哪篇」的选题清单</li>
+</ul>
+<p><strong>类比：编译 vs 收藏。</strong> 普通收藏夹是把文章一篇篇塞进文件夹，要用时自己一篇篇翻；fuxi 像请了个研究助理，帮你把聊同一个主题的文章全读完，<strong>综合成一页「这件事我的结论」</strong>——你之后只读这一页，不用回头翻原文。这就是 06 篇说的那四个字：<strong>编译 &gt; 检索</strong>。</p>
+<p><strong>说个真实的踩坑</strong>：fuxi 第一版我压根没有编译层，就是每来一条素材写一篇带判断的笔记（也就是上面的笔记层），以为这就够了。结果写一篇「AI 视频工具怎么选」的稿子时，我发现自己还是得把五六篇相关笔记一篇篇打开、对着看、在脑子里现场拼——<strong>笔记是攒下来了，但「我的判断」还散在五六个文件里，每次写都要重新拼一遍</strong>。这才逼我加了编译层：让 AI 提前把这五六篇合成一页「我对 AI 视频工具的当前判断」，下次写直接读这一页。所以编译层是 fuxi 第二版才加的，不是一开始就想到的——这正是 04 节要讲的「架构分版本」。</p>
+<p>最后再配几个目录文件，帮你和 AI 快速找到东西、记得住每次都存了啥——「存」这一层就齐了。</p>
+<h3 id="fuxi_2">取：fuxi 怎么输出（三条流）</h3>
+<p>这是 fuxi 跟卡帕西版本最大的差异——<strong>卡帕西的终点是「答得出」，fuxi 的终点是「写得出」</strong>。所以 fuxi 顺着 02 讲的「取」三问（谁取、何时取、取什么形式），落出了三条独立的流——<strong>你的产品几条不一定，看你「取」的场景有几种</strong>：</p>
+<ol>
+<li><strong>问答流</strong>：我问什么 → AI 先查目录、找到相关的那页「结论」 → <strong>直接读那页</strong>（而不是回头一篇篇翻原文）→ 综合回答给我</li>
+<li><strong>选题流</strong>：基于主题页，反过来告诉我「这个主题现在能写哪几篇」，直接给一份可执行的选题</li>
+<li><strong>周报流</strong>：每周梳理「本周入库了什么」+「哪个主题该编译了」</li>
+</ol>
+<p>第 2 条「选题流」是 fuxi 比卡帕西多出来的关键一层——<strong>知识库不只回答我的问题，还反过来给我派活</strong>。</p>
+<h3 id="_7">完整数据流图</h3>
+<p>把上面三问汇成一张图：</p>
+<p><img alt="fuxi 完整数据流" src="../_assets/08-fuxi-flow@2x.png" /></p>
+<p><strong>怎么读这张图</strong>：左边两路「进」——链接 / PDF 这类外部资料走「单源笔记」，我自己的想法走「想法笔记」；两路汇进中间的<strong>编译层</strong>，被编译成主题页 / 实体页；再从编译层分出右边三条「取」的流。重点看编译层那条<strong>往回织</strong>的回环箭头——这是 fuxi 跟普通收藏夹最本质的区别：<strong>每加一条新资料，AI 会回头把相关的主题页、实体页都重写一遍，还会标出新旧资料的矛盾</strong>，不是简单加个链接。这就是 06 篇说的「往回织」落到架构图上的样子。</p>
+<!-- mermaid source（内部保留，不发公众号）
+flowchart LR
+    I1[链接 / PDF] -->
+<p>RAW[raw 原文]
+    RAW --&gt; SN[单源笔记 带立场]
+    I2[想法 / 灵感] --&gt; TN[想法笔记]
+    SN --&gt; CMP[编译 → 主题页 / 实体页]
+    TN --&gt; CMP
+    CMP -.往回织 标矛盾.-&gt; CMP
+    CMP --&gt; ASK[问答流]
+    CMP --&gt; BRF[选题流]
+    CMP --&gt; WK[周报流]
+--&gt;</p>
+<h3 id="07">跟 07 一页纸的对照</h3>
+<table>
+<thead>
+<tr>
+<th>07 一页纸</th>
+<th>08 架构图位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入：链接、想法</td>
+<td>左侧「进」</td>
+</tr>
+<tr>
+<td>处理：摘要 + 反向更新</td>
+<td>中间「存」的编译层 + 往回织回环</td>
+</tr>
+<tr>
+<td>输出：能问、能告诉我写啥</td>
+<td>右侧三条「取」的流</td>
+</tr>
+<tr>
+<td>不做：协作、多端、配图</td>
+<td>图里没有 ≠ 默认不做</td>
+</tr>
+</tbody>
+</table>
+<p><strong>看到了吗？架构图本质就是一页纸 MVP 的「流动版」</strong>——把静态的功能列表，翻译成动态的「东西怎么走」。</p>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：fuxi 把笔记「编译」成主题页 + 往回织回环 + 三条「取」的流（问答 / 选题 / 周报）——<strong>这是它从「答得出」升级到「用得出」的架构秘密</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="04">04 普通人最容易踩的四个架构坑</h2>
+<p>光会画图不够，得知道<strong>画错的样子长什么样</strong>。下面这 4 个坑我自己全踩过，按出现频率从高到低排——</p>
+<h3 id="_8">坑一：先想功能，后想流</h3>
+<p><strong>症状</strong>：列了一长串功能（自动分类、智能推荐、可视化、协作……），然后挨个想怎么做。</p>
+<p><strong>后果</strong>：功能堆成一堆，<strong>流向混乱</strong>——这个功能输出什么没人接，那个功能要的输入没人提供。</p>
+<p><strong>治法</strong>：<strong>先画流，再想功能</strong>。功能是流的副产品——流通了，功能自然就稳了；流没通，功能再多也是孤岛。</p>
+<p>我做 fuxi 之前，列功能列了 30 多条。但真的画完进存取之后，发现 80% 的功能要么是「流上的某个节点」，要么是「不在流里的孤儿」——后者直接砍掉，剩下的就是核心架构。</p>
+<h3 id="_9">坑二：只想「进」不想「取」（最常见，最致命）</h3>
+<p><strong>症状</strong>：想清楚了输入源、想清楚了存哪——然后就开干了。</p>
+<p><strong>后果</strong>：你做出来的是一个<strong>精美的收藏夹</strong>，<strong>不是知识库</strong>。</p>
+<p>这是我开头讲的 fuxi 翻车——更扎心的是，<strong>连 Notion、Obsidian 这些被无数人推荐的工具，都没逃出这个坑</strong>：只想清楚了进和存，从没把「取」想透。这也是 06 篇说它们为什么不够用的根本原因。</p>
+<p><strong>治法</strong>：画架构图时，<strong>强制要求自己最先画「取」</strong>。你写不出至少 2 条「取」的方式，就不该继续往下做——因为做出来你也用不上。</p>
+<h3 id="_10">坑三：抽象层级混乱</h3>
+<p><strong>症状</strong>：架构图上同时出现「微信公众号文章」「Claude API」「JSON 文件」——把<strong>数据、工具、技术全混在一起</strong>。</p>
+<p><strong>后果</strong>：你看不清「东西怎么走」，因为图上一半是「东西」、一半是「工具」。</p>
+<p><strong>治法</strong>：<strong>架构图只画「东西」，不画「工具」</strong>。「用什么工具实现」是 09 技术思维的事。08 阶段，图上每个框框要么是数据（链接、摘要、索引），要么是动作（抓取、整理、查询）。</p>
+<h3 id="_11">坑四：一上来就想完美架构</h3>
+<p><strong>症状</strong>：想把 v1 架构图画到「未来三年都不用改」的程度。</p>
+<p><strong>后果</strong>：永远画不完。<strong>没开始做，先在画图阶段卡死</strong>。</p>
+<p><strong>治法</strong>：<strong>架构跟 MVP 一样，分版本</strong>。v1 架构图就服务 v1 MVP——能跑通进存取三块就行。v2、v3 的架构是后续的事。</p>
+<p>我自己 fuxi 现在的架构图，已经是 v3 了——前两版都是用了一段时间发现哪里不顺，回头改的。<strong>架构图是活的，不是一次性的</strong>。</p>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：<strong>先画流再想功能、先画「取」再画「进」、只画东西不画工具、架构分版本</strong>——四条铁律避开 90% 的架构翻车。</p>
+</blockquote>
+<hr />
+<h2 id="05-mvp">05 进阶：产品做 MVP，架构想得更全</h2>
+<p>到这儿你可能犯嘀咕：坑四刚说「别追求完美架构、分版本」，怎么又要「想全、留余地」？</p>
+<p><strong>不矛盾——功能和架构，是两套标准</strong>：</p>
+<blockquote>
+<p><strong>功能狠狠做减法，架构得尽量想得更全。</strong> 功能只留最小可用；但架构要算两条——<strong>能长大（可扩展）、不会塌（稳定）</strong>。</p>
+</blockquote>
+<h3 id="10">还是那栋大楼：先盖 10 层，但能往上加</h3>
+<p>前面 01 节盖大楼那张图纸，到这儿正好接上。</p>
+<p><strong>你不用一开始就盖到 20 层</strong>——先盖 10 层就行（这就是 MVP）。但只要<strong>承重骨架立得稳、分层留了往上接的余地</strong>，将来要加到 15 层、20 层，在原结构上往上长就行，不用把楼炸了重盖。</p>
+<p>而且<strong>产品比真盖楼还省事</strong>：真盖楼加层受地基限制，但软件架构只要分层清晰、留了接口，加「楼层」（新功能）就是往上接，连地基都不用重浇。</p>
+<p>这就是架构思维的扩展性——<strong>不要求你一开始想到终局，但要求你立的骨架能长大</strong>。具体到画图，就是这三样要往远了想：</p>
+<ul>
+<li><strong>分层结构</strong>：层次先分好，哪怕某一层暂时是空的</li>
+<li><strong>数据怎么组织</strong>：格式、字段留点余量，别写死</li>
+<li><strong>扩展口</strong>：未来可能接入的输入源、输出方式，先在图上留个虚位</li>
+</ul>
+<h3 id="fuxi_3">fuxi 就是这么干的</h3>
+<p>还记得那个踩坑故事吗？fuxi 第一版没有编译层——但我的<strong>分层结构一开始就给它留好了位置</strong>，那层先空着。等 v2 真要加，是直接「往上长」，原料层、笔记层一动没动。</p>
+<p><strong>反过来想</strong>：假如当初我没分层、把摘要和原始资料全混在一个文件夹里，那加编译层就得把几百条数据推翻重整——那才是灾难。</p>
+<p>再比如，fuxi 第一版我只支持 GitHub 链接，但设计时就给「多渠道」留了口子。</p>
+<p>你可能会问：不都是链接吗，GitHub 链接和 X 链接能有啥区别？区别大了——不同来源的抓取难度、反爬对抗完全不一样，这是下一篇「技术思维」要聊的事。但<strong>架构这一层，先把「多渠道」这个口子留好就行，具体怎么抓是后面的事</strong>。</p>
+<p>所以「架构留余地」的妙处是：<strong>它几乎不增加 v1 的工作量，却能让你 v2 不推翻重来。</strong></p>
+<h3 id="_12">楼更得建得牢：数据别丢、错了能回退</h3>
+<p>光能加层还不够——<strong>楼更得建得牢</strong>。承重墙不能为了省钱砍掉，不然盖到 15 层塌了，能加层的本事再大也白搭。</p>
+<p>落到产品上，稳定性就两条（02、03 节其实埋过）：</p>
+<ul>
+<li><strong>数据不能丢</strong>：原料层只读、永远留着事实来源——AI 哪天判断错了，你能翻回原文核对（这就是 02 说的「分层 = 给数据上保险」）</li>
+<li><strong>出错能回退</strong>：每一步处理别覆盖上一步，留得住「上一个版本」，错了能退回去</li>
+</ul>
+<p><strong>可扩展性管「能不能长大」，稳定性管「会不会塌」——架构这两条都想到了，才算考虑全面。</strong></p>
+<h3 id="_13">功能克制，架构算两条</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>怎么对待</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>功能（做什么）</strong></td>
+<td>狠狠做减法——v1 只留最小可用那几个</td>
+</tr>
+<tr>
+<td><strong>架构（怎么走）</strong></td>
+<td>想两条：<strong>能长大</strong>（分层、留扩展口）+ <strong>不会塌</strong>（数据只读保险、错了能回退）</td>
+</tr>
+</tbody>
+</table>
+<p>注意是<strong>适度</strong>：不是让你把三年后的功能全画进图里（那又掉回坑四了），而是<strong>心里有未来的生长方向、在结构上留好位置，但 v1 不强求实现它</strong>。</p>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：<strong>功能做 MVP，架构算两条</strong>——<strong>能长大</strong>（可扩展：加功能往上接，不推翻）+ <strong>不会塌</strong>（稳定：数据不丢、错了能回退）。</p>
+</blockquote>
+<hr />
+<h2 id="06-ai">06 动手：让 AI 帮你出第一版架构</h2>
+<p>老规矩，动手。但这一篇的动手，跟你想的不一样——</p>
+<p><strong>AI 时代，你根本不用真去画架构图。</strong> 架构图以前是画给工程师看的；现在你的「工程师」是 Claude / Codex，它们读文字比读图快得多。所以你要产出的<strong>不是一张图，是一份 AI 一看就懂的「架构文档」</strong>，然后让 AI 照着它往下帮你做。</p>
+<p>更省事的是：<strong>这份文档的初稿，直接让 AI 起就行，你的活儿是审和改。</strong></p>
+<h3 id="ai">第一步：把料喂给 AI，让它出初稿</h3>
+<p>把你 07 篇那张一页纸 MVP，加上这篇学的「进存取三问」，一起丢给 AI。这个 Prompt 直接抄：</p>
+<div class="highlight"><pre><span></span><code>这是我的产品 MVP 定义：
+[贴上你 07 篇的一页纸 MVP]
+
+请按「进、存、取」三个维度，帮我设计一版架构方案：
+- 进：东西从哪来、怎么触发、什么格式
+- 存：分几层、每层放什么（先别管具体技术）
+- 取：谁来取、什么时候、取什么形式（至少给 2 条）
+原则：先想流再想功能，只描述「东西怎么走」，不要写用什么工具。
+</code></pre></div>
+<p>AI 会还你一份进存取齐全的架构初稿。</p>
+<h3 id="ai_1">第二步：对着三问审，哪不对让 AI 改</h3>
+<p>别全盘照收——<strong>AI 给的是初稿，拍板的是你</strong>。对着这三问审：</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>「取」给够 2 条了吗？</strong> 最容易漏（坑二），AI 也常只给一条</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>「存」分层合理吗？</strong> 有没有把原料和成品混在一层（坑三）</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <strong>每条「进」都能追到某条「取」吗？</strong> 对不上的，让 AI 砍掉</li>
+</ul>
+<p>哪不满意就直接说：「『取』只给了问答，再加一条主动推送给我的」「存这块原料和加工混了，拆成两层」。<strong>一步步改，改到你看着这份文档、能在脑子里想象出产品怎么跑起来为止。</strong></p>
+<h3 id="ai_2">第三步：让 AI 整理成一份「架构文档」存好</h3>
+<p>满意了，让 AI 把最终方案整理成一份干净的 markdown 文档，存进你的项目——这就是你产品设计初期的架构文档。它管两头：</p>
+<ul>
+<li><strong>给 AI 看</strong>：下一篇 09 选技术、之后让 AI 写代码，都照着它来，AI 一看就懂；</li>
+<li><strong>给自己看</strong>：产品长大时回来改它就行——架构是活的（坑四说过）。照样不用自己动手，把想改的地方说给 AI，让它去改。</li>
+</ul>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：动手不是自己画图，是<strong>让 AI 出架构初稿 → 你对着进存取审 → 一步步改 → 存成给 AI 看的架构文档</strong>。</p>
+</blockquote>
+<hr />
+<h2 id="07_1">07 小结</h2>
+<p>这一篇核心就一句话：</p>
+<blockquote>
+<p><strong>产品想清楚做什么之后，下一步不是开干，是先理清「东西怎么走」——给 AI 一份看得懂的架构文档。</strong></p>
+</blockquote>
+<p>架构思维三问：<strong>进、存、取</strong>——</p>
+<table>
+<thead>
+<tr>
+<th>问</th>
+<th>解决什么</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>进</strong></td>
+<td>东西从哪来、怎么触发、什么格式</td>
+</tr>
+<tr>
+<td><strong>存</strong></td>
+<td>分几层、每层放什么（别管具体技术）</td>
+</tr>
+<tr>
+<td><strong>取</strong></td>
+<td>谁来取、什么时候、什么形式</td>
+</tr>
+</tbody>
+</table>
+<p>四个坑别踩：</p>
+<ul>
+<li>先画流，再想功能</li>
+<li>先画「取」，再画「进」</li>
+<li>只画东西，不画工具</li>
+<li>架构分版本，别追求一次完美</li>
+</ul>
+<p>再加一条进阶心法：<strong>功能做 MVP，架构算两条</strong>——能长大（可扩展）+ 不会塌（稳定）。</p>
+<p>到这里，你手上应该已经有了：</p>
+<ul>
+<li>06：为什么做（动机）</li>
+<li>07：做什么（一页纸 MVP）</li>
+<li><strong>08：怎么走（架构 v1）</strong> ← 你在这</li>
+</ul>
+<p>下一篇 <strong>09「技术思维：让 AI 帮你选最适合的技术栈」</strong>——架构理清了，下一步是<strong>用什么工具实现</strong>。我会带你看一个反常识的真相：<strong>AI 时代选技术，比想象中简单得多</strong>——你不需要懂技术，你需要懂的是「怎么让 AI 帮你选」。</p>
+<blockquote>
+<p>留个问题给你：<strong>你让 AI 出的那版架构里，「取」写下来几条？</strong> 不到 2 条，多半是产品定义还没想透——回 07 补补课。评论区把你的「取」清单甩给我，下一篇我挑高频场景做技术选型示范。</p>
+</blockquote>
+<hr />
+<p><em>本系列持续更新，建议收藏。</em></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 朴散
+    </div>
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>
