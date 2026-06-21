@@ -434,3 +434,35 @@ body {
 .zh-hero-meta .zh-stat-updated {
   color: #d97706;
 }
+
+/* ═══ 移动端适配 ═══ */
+@media screen and (max-width: 768px) {
+  .md-content__inner:has(.zh-hero) {
+    grid-template-columns: 1fr;
+  }
+  .zh-notes ul {
+    columns: 1;
+  }
+  .zh-row-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .zh-hero h1 {
+    font-size: 1.5rem;
+  }
+  .md-content__inner {
+    padding: 0.5rem 0.8rem;
+  }
+  .zh-col, .zh-section-wide, .zh-recent {
+    padding: 0.5rem 0.6rem;
+  }
+  .zh-col ul li a,
+  .zh-notes ul li a {
+    font-size: 0.8rem;
+  }
+  .zh-hero {
+    padding: 1rem 0 0.8rem 0;
+  }
+}
