@@ -1,0 +1,141 @@
+/* ── zhishi 自定义样式 ── */
+
+/* 内容区加宽，阅读更舒服 */
+.md-grid {
+  max-width: 68rem;
+}
+
+/* 正文排版优化 */
+.md-content__inner {
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.md-content__inner p {
+  margin: 0.6em 0;
+}
+
+/* 标题间距 */
+.md-content__inner h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-top: 1.2rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lighter);
+}
+
+.md-content__inner h2 {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-top: 1.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.md-content__inner h3 {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+/* 代码块 */
+.md-typeset code {
+  font-size: 0.8rem;
+}
+
+/* 导航栏顶部 tabs 样式微调 */
+.md-tabs {
+  background-color: var(--md-primary-fg-color--dark);
+}
+
+/* 首页卡片样式 */
+.zhishi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+
+.zhishi-card {
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  transition: all 0.2s ease;
+  background: var(--md-default-bg-color);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.zhishi-card:hover {
+  border-color: var(--md-accent-fg-color);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.zhishi-card h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.zhishi-card h3 a {
+  color: var(--md-typeset-color);
+  text-decoration: none;
+}
+
+.zhishi-card h3 a:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.zhishi-card p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+  line-height: 1.5;
+}
+
+.zhishi-card .count {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--md-accent-fg-color);
+  font-weight: 500;
+}
+
+/* 首页 hero 区域 */
+.zhishi-hero {
+  text-align: center;
+  padding: 2rem 0 1.5rem;
+}
+
+.zhishi-hero h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  border: none;
+  margin: 0 0 0.5rem;
+  padding: 0;
+}
+
+.zhishi-hero p {
+  font-size: 1rem;
+  color: var(--md-default-fg-color--light);
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.zhishi-hero .stats {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.zhishi-hero .stats span {
+  display: inline-block;
+  margin: 0 0.8rem;
+}
+
+/* 夜间模式适配 */
+[data-md-color-scheme="slate"] .zhishi-card {
+  background: var(--md-default-bg-color);
+  border-color: var(--md-default-fg-color--lightest);
+}
