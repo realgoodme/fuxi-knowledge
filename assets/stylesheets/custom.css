@@ -440,12 +440,13 @@ body {
 }
 
 /* ═══ 左侧导航 ═══ */
-.md-sidebar--primary {
-  width: 14rem;
-}
-
-.md-sidebar--primary .md-sidebar__scrollwrap {
-  width: 14rem;
+@media screen and (min-width: 76.25em) {
+  .md-sidebar--primary {
+    width: 14rem;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    width: 14rem;
+  }
 }
 
 .md-sidebar--primary .md-nav--primary .md-nav__title {
