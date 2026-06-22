@@ -305,17 +305,6 @@ body {
 /* ═══ 修复移动端侧边栏残影 ═══ */
 @media screen and (max-width: 1219px) {
   body { overflow-x: hidden; }
-  .md-main__inner { overflow-x: hidden; }
-  .md-sidebar--primary,
-  .md-sidebar--primary .md-sidebar__scrollwrap {
-    width: 12.1rem !important;
-  }
-}
-@media screen and (max-width: 959px) {
-  .md-sidebar--primary,
-  .md-sidebar--primary .md-sidebar__scrollwrap {
-    width: auto !important;
-  }
 }
 
 /* ═══ 编译层计数更新 ═══ */
