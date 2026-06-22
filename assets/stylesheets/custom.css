@@ -302,9 +302,17 @@ body {
   margin-top: 0;
 }
 
-/* ═══ 修复移动端侧边栏残影 ═══ */
+/* ═══ 移动端顶部标签栏（替代左侧抽屉）═══ */
 @media screen and (max-width: 1219px) {
   body { overflow-x: hidden; }
+  .md-tabs { display: flex !important; overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .md-tabs::-webkit-scrollbar { display: none; }
+  .md-tabs__list { display: flex; flex-wrap: nowrap; white-space: nowrap; width: auto; }
+  .md-tabs__item { flex: 0 0 auto; }
+  .md-header__button[for="__drawer"] { display: none !important; }
+  .md-overlay { display: none !important; pointer-events: none !important; }
+  .md-sidebar--primary[data-md-type="navigation"] ~ .md-overlay { display: none !important; }
 }
 
 /* ═══ 编译层计数更新 ═══ */
