@@ -305,6 +305,8 @@ body {
 /* ═══ 移动端顶部标签栏 + 内联导航列表 ═══ */
 @media screen and (max-width: 1219px) {
   body { overflow-x: hidden; }
+  /* 主容器改为纵向排列 */
+  .md-main__inner { flex-direction: column !important; }
   /* 标签栏：常驻横滑 */
   .md-tabs { display: flex !important; overflow-x: auto; overflow-y: hidden; flex-wrap: nowrap;
     -webkit-overflow-scrolling: touch; scrollbar-width: none; }
