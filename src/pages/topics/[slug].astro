@@ -13,12 +13,15 @@ const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric"
 ---
 
 <BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
-  <article class="reading">
+  <article class="reading topic-reading">
+    <a class="reading-back" href="/topics/">← 返回主题地图</a>
     <header class="reading-header">
-      <p class="eyebrow">主题编织</p>
+      <div class="reading-record"><span>DOSSIER / {String(entry.data.publicOrder ?? 0).padStart(2, "0")}</span><span>主题编织</span></div>
       <h1>{entry.data.title}</h1>
-      {formattedDate && <time datetime={date.toISOString()}>更新于 {formattedDate}</time>}
+      {entry.data.summary && <p class="reading-deck">{entry.data.summary}</p>}
+      {formattedDate && <div class="reading-meta"><time datetime={date.toISOString()}>最近修订 · {formattedDate}</time></div>}
     </header>
     <div class="prose"><Content /></div>
+    <footer class="reading-end"><span>— LIVING DOSSIER —</span><a href="/topics/">浏览其他主题 →</a></footer>
   </article>
 </BaseLayout>

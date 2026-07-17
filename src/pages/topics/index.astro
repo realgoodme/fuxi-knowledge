@@ -6,7 +6,11 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 const topics = (await getCollection("topics")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
 ---
 
-<BaseLayout title="专题｜朴散的思想仓库">
-  <section class="listing-hero"><p class="eyebrow">TOPICS</p><h1>专题</h1><p>把零散文章往回织，留下可以反复使用的判断。</p></section>
-  <section class="section-wrap listing-grid"><div class="card-grid">{topics.map((entry) => <ContentCard entry={entry} kind="topic" />)}</div></section>
+<BaseLayout title="主题｜朴散的思想仓库">
+  <section class="archive-hero topic-archive-hero">
+    <p class="eyebrow">THE THOUGHT MAP</p>
+    <div><h1>主题地图</h1><p>把零散文章往回织，留下可以反复使用、也允许持续被修订的判断。</p></div>
+    <span>{String(topics.length).padStart(2, "0")} DOSSIERS</span>
+  </section>
+  <section class="archive-section archive-listing"><div class="card-grid topic-grid">{topics.map((entry, index) => <ContentCard entry={entry} kind="topic" index={index + 1} />)}</div></section>
 </BaseLayout>

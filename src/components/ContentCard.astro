@@ -1,20 +1,20 @@
 ---
-const { entry, kind = "article" } = Astro.props;
+const { entry, kind = "article", index = 1 } = Astro.props;
 const href = `/${kind === "topic" ? "topics" : "articles"}/${entry.id}/`;
 const date = entry.data.date ?? entry.data.updated ?? entry.data.ingested;
-const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "short", day: "numeric" }).format(date);
+const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" }).format(date).replaceAll("/", ".");
+const number = String(index).padStart(2, "0");
 ---
 
-<article class="content-card">
-  <div class="card-meta">
-    <span>{kind === "topic" ? "主题" : entry.data.series ?? "文章"}</span>
-    {formattedDate && <time datetime={date.toISOString()}>{formattedDate}</time>}
+<article class:list={["content-card", kind === "topic" && "topic-card"]}>
+  <div class="card-kicker">
+    <span>{kind === "topic" ? "主题档案" : entry.data.series ?? "原创文章"}</span>
+    <span>{number}</span>
   </div>
   <h3><a href={href}>{entry.data.title}</a></h3>
   {entry.data.summary && <p>{entry.data.summary}</p>}
-  {entry.data.tags.length > 0 && (
-    <div class="tags">
-      {entry.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
-    </div>
-  )}
+  <div class="card-footer">
+    {formattedDate ? <time datetime={date.toISOString()}>{kind === "topic" ? `更新 ${formattedDate}` : formattedDate}</time> : <span>长期存档</span>}
+    <a class="card-arrow" href={href} aria-label={`阅读：${entry.data.title}`}>↗</a>
+  </div>
 </article>
