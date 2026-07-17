@@ -3,6 +3,7 @@ from __future__ import annotations
 import re
 import shutil
 import sys
+from os.path import relpath
 from pathlib import Path
 
 from kb_common import ROOT, parse_frontmatter, read_text
@@ -50,6 +51,21 @@ def public_markdown_target(source_relative: str, target: str) -> str | None:
     return (Path(source_relative).parent / path_part).as_posix()
 
 
+def rewrite_public_wikilinks(
+    content: str, source_relative: str, public_paths: set[str], titles: dict[str, str]
+) -> str:
+    def replace(match: re.Match[str]) -> str:
+        target, separator, label = match.group(1).partition("|")
+        resolved = public_wikilink_target(target)
+        if resolved not in public_paths:
+            return match.group(0)
+        relative = Path(relpath(resolved, Path(source_relative).parent)).as_posix()
+        text = label.strip() if separator else titles.get(resolved, resolved)
+        return f"[{text}]({relative})"
+
+    return re.sub(r"\[\[([^]]+)\]\]", replace, content)
+
+
 def main() -> int:
     pages = nav_pages(read_text(CONFIG))
     if not pages:
@@ -58,6 +74,7 @@ def main() -> int:
 
     errors: list[str] = []
     sources: list[tuple[str, Path]] = []
+    titles: dict[str, str] = {}
     for rel in pages:
         source = safe_source(rel)
         if not source.is_file():
@@ -68,6 +85,7 @@ def main() -> int:
             errors.append(f"私密页面出现在公开导航：{rel}")
             continue
         sources.append((rel, source))
+        titles[rel] = str(meta.get("title", rel))
 
     if errors:
         for error in errors:
@@ -100,7 +118,10 @@ def main() -> int:
     for rel, source in sources:
         target = STAGE / rel
         target.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy2(source, target)
+        target.write_text(
+            rewrite_public_wikilinks(read_text(source), rel, public_paths, titles),
+            encoding="utf-8",
+        )
 
     assets = ROOT / "assets"
     if assets.exists():
