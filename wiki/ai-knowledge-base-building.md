@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-22
 updated: 2026-06-22
 aliases: [zhishi, fuxi, 知识库搭建, AI学习之路]
-related: [weihe-yao-da-zhishiku, ai-product-thinking-20260604, ai-architecture-thinking-20260610, ai-tech-thinking-20260609]
+related: [notes/weihe-yao-da-zhishiku.md, notes/ai-product-thinking-20260604.md, notes/ai-architecture-thinking-20260610.md, notes/ai-tech-thinking-20260609.md]
 ---
 
 # AI 知识库搭建方法论
@@ -31,17 +31,17 @@ zhishi（产品名，最早内部代号 fuxi）是阿 sir 自主研发的个人 
 - **存**（四层）：raw 原料层 → notes 笔记层 → wiki 编译层 → index 索引层
 - **取**（输出）：问答流、选题流、周报流
 
-详见 [[notes/ai-architecture-thinking-20260610|AI 学习之路·实战篇08：架构思维（笔记）]]
+详见 [[raw/articles/ai-architecture-thinking-20260610|08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」]]
 
 ### 3. 往回织机制
 
 每次入库走五步：抓原文 → 写摘要 → 更新索引 → 织入 wiki → 记入选题池。其中「织入 wiki」是整套系统与普通笔记的最本质区别。
 
-参见 [[notes/ai-product-thinking-20260604|产品思维笔记]] 中关于「找需求先找焦虑」的方法论。
+参见 [[raw/articles/ai-product-thinking-20260604|07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」]] 中关于「找需求先找焦虑」的方法论。
 
 ## 技术栈选型
 
-四大原则：主流、本地、简单、大众。具体技术选型理由详见 [[notes/ai-tech-thinking-20260609|技术思维笔记]]。
+四大原则：主流、本地、简单、大众。具体技术选型理由详见 [[raw/articles/ai-tech-thinking-20260609|09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」]]。
 
 ### 当前技术栈
 
@@ -57,11 +57,11 @@ zhishi（产品名，最早内部代号 fuxi）是阿 sir 自主研发的个人 
 zhishi 不是纯技术产品，而是写作工具箱的核心组件。参见：
 - [[wiki/ergou-xilie|二狗系列]] — 写作方法论的落地案例
 - [[wiki/shijianlun|实践论]] — 写作的哲学根基
-- [[ZHISHI-PRODUCT-DESIGN]] — 产品设计文档全文
+- 产品设计文档仅在本地知识库维护，不进入公开站点。
 
 ## 关联
 
-- [[notes/weihe-yao-da-zhishiku|为什么 AI 越强，我越要搭自己的知识库（笔记）]] — 系列总纲
-- [[notes/ai-product-thinking-20260604|AI 学习之路·实战篇07：产品思维（笔记）]]
-- [[notes/ai-architecture-thinking-20260610|AI 学习之路·实战篇08：架构思维（笔记）]]
-- [[notes/ai-tech-thinking-20260609|AI 学习之路·实战篇09：技术思维（笔记）]]
+- [[raw/articles/weihe-yao-da-zhishiku|为什么 AI 越强，我越要搭自己的知识库]] — 系列总纲
+- [[raw/articles/ai-product-thinking-20260604|07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」]]
+- [[raw/articles/ai-architecture-thinking-20260610|08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」]]
+- [[raw/articles/ai-tech-thinking-20260609|09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」]]

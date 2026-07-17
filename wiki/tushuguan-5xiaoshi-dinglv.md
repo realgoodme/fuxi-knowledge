@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-21
 updated: 2026-06-21
 aliases: [5小时定律, 专注5小时]
-related: [行动单元思维, 反拖延, 专注力]
+related: [wiki/xingdong-danyuan-siwei.md]
 ---
 # 图书馆5小时定律
 

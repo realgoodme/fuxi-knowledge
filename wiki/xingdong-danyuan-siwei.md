@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-21
 updated: 2026-06-21
 aliases: [单元化思维, 任务切片]
-related: [图书馆5小时定律]
+related: [wiki/tushuguan-5xiaoshi-dinglv.md]
 ---
 # 行动单元思维
 

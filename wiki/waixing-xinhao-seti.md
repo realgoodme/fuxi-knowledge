@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-21
 updated: 2026-06-21
 aliases: [SETI, 搜寻地外文明, 外星信号, 窄带信号]
-related: [反常识写作方法]
+related: [wiki/fanchangshi-xiezuo.md]
 ---
 # SETI 与外星信号探测
 

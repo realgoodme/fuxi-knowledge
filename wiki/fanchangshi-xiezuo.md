@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-21
 updated: 2026-06-22
 aliases: [反常识科普, 认知反转, 科学写作, 故事寓法]
-related: [进学解（笔记）, 鳄鱼文（笔记）, 祭十二郎文（笔记）, 孔乙己（笔记）, SETI 与外星信号探测, 二狗系列, 实践论]
+related: [notes/jinxuejie.md, notes/eyuwen.md, notes/shierlang.md, notes/kongyiji.md, wiki/waixing-xinhao-seti.md, wiki/ergou-xilie.md, wiki/shijianlun.md]
 
 ---
 

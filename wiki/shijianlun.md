@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-21
 updated: 2026-06-22
 aliases: [毛泽东, 认识论, 知行合一]
-related: [进学解（笔记）, 孔乙己（笔记）, 反常识写作方法, 二狗系列]
+related: [notes/jinxuejie.md, notes/kongyiji.md, wiki/fanchangshi-xiezuo.md, wiki/ergou-xilie.md]
 ---
 # 实践论
 

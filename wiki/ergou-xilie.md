@@ -4,7 +4,7 @@ type: 主题页
 created: 2026-06-22
 updated: 2026-06-22
 aliases: [二狗, 反诈故事, 以案说法]
-related: [反常识写作方法, 实践论]
+related: [wiki/fanchangshi-xiezuo.md, wiki/shijianlun.md]
 ---
 # 二狗系列
 
