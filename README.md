@@ -1,3 +1,5 @@
-# 思想仓库公开站点
+# 朴散的思想仓库公开站
 
-此仓库只保留已公开的原创文章和主题页。完整知识库保存在私有仓库，不会在此处发布。
+此目录由私有知识库的 `scripts/export_public_site.py` 生成，只包含白名单文章与主题页。
+
+Cloudflare Pages：构建命令 `npm run build`，输出目录 `dist`。

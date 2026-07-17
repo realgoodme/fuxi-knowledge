@@ -1,0 +1,24 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  return (await getCollection("topics")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const date = entry.data.updated;
+const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
+---
+
+<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
+  <article class="reading">
+    <header class="reading-header">
+      <p class="eyebrow">主题编织</p>
+      <h1>{entry.data.title}</h1>
+      {formattedDate && <time datetime={date.toISOString()}>更新于 {formattedDate}</time>}
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+</BaseLayout>

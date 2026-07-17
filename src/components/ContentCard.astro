@@ -1,0 +1,20 @@
+---
+const { entry, kind = "article" } = Astro.props;
+const href = `/${kind === "topic" ? "topics" : "articles"}/${entry.id}/`;
+const date = entry.data.date ?? entry.data.updated ?? entry.data.ingested;
+const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "short", day: "numeric" }).format(date);
+---
+
+<article class="content-card">
+  <div class="card-meta">
+    <span>{kind === "topic" ? "主题" : entry.data.series ?? "文章"}</span>
+    {formattedDate && <time datetime={date.toISOString()}>{formattedDate}</time>}
+  </div>
+  <h3><a href={href}>{entry.data.title}</a></h3>
+  {entry.data.summary && <p>{entry.data.summary}</p>}
+  {entry.data.tags.length > 0 && (
+    <div class="tags">
+      {entry.data.tags.slice(0, 3).map((tag) => <span>{tag}</span>)}
+    </div>
+  )}
+</article>

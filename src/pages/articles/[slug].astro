@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+  return (await getCollection("articles")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const date = entry.data.date ?? entry.data.ingested;
+const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
+---
+
+<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
+  <article class="reading">
+    <header class="reading-header">
+      <p class="eyebrow">{entry.data.series ?? "原创文章"}</p>
+      <h1>{entry.data.title}</h1>
+      {formattedDate && <time datetime={date.toISOString()}>{formattedDate}</time>}
+      {entry.data.tags.length > 0 && <div class="tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>}
+    </header>
+    <div class="prose"><Content /></div>
+  </article>
+</BaseLayout>

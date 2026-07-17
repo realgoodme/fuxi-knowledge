@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+import ContentCard from "../components/ContentCard.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const byOrder = (a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0);
+const articles = (await getCollection("articles")).sort(byOrder);
+const topics = (await getCollection("topics")).sort(byOrder);
+const latest = articles.slice(0, 3);
+const selected = articles.slice(3, 6);
+---
+
+<BaseLayout>
+  <section class="hero">
+    <p class="eyebrow">PUSANZ · WRITING & THINKING</p>
+    <h1>把观察写下来，<br />让经验留下来。</h1>
+    <p class="hero-copy">一个警察写作者的故事、判断与 AI 实践。</p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#latest">从最新文章开始</a>
+      <a class="button button-secondary" href="/topics/">浏览主题</a>
+    </div>
+    <div class="site-stats" aria-label="公开内容统计">
+      <span>{articles.length} 篇公开文章</span><span>{topics.length} 个成熟主题</span>
+    </div>
+  </section>
+
+  <section class="section-wrap" id="latest">
+    <div class="section-heading"><p>RECENT</p><h2>最近写作</h2><a href="/articles/">全部文章 →</a></div>
+    <div class="card-grid">{latest.map((entry) => <ContentCard entry={entry} />)}</div>
+  </section>
+
+  <section class="section-wrap muted-section">
+    <div class="section-heading"><p>SELECTED</p><h2>值得从这里读起</h2></div>
+    <div class="card-grid">{selected.map((entry) => <ContentCard entry={entry} />)}</div>
+  </section>
+
+  <section class="section-wrap">
+    <div class="section-heading"><p>TOPICS</p><h2>持续编织的主题</h2><a href="/topics/">全部主题 →</a></div>
+    <div class="card-grid">{topics.slice(0, 3).map((entry) => <ContentCard entry={entry} kind="topic" />)}</div>
+  </section>
+
+  <section class="about" id="about">
+    <p class="eyebrow">ABOUT</p>
+    <h2>朴散</h2>
+    <p>警察、写作者、互联网产品人。这里公开原创文章与已经沉淀成形的主题；完整知识库只在本地维护。</p>
+  </section>
+</BaseLayout>
