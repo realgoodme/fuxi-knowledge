@@ -3,3 +3,13 @@ dist/
 .astro/
 .site-docs/
 __pycache__/
+
+# old MkDocs artifacts
+docs/
+notes/
+raw/
+wiki/
+site/
+scripts/
+assets/
+reports/
