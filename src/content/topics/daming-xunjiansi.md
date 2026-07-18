@@ -12,6 +12,8 @@ tags: [基层治理, 叙事, 系列]
 
 # 大明巡检司系列
 
+<img src="/fuxi-knowledge/images/chenxunjian-hero.jpg" alt="巡检司街头场景" style="width:100%;max-width:760px;border-radius:0;margin:1rem 0 2rem;">
+
 巡检司是明代最基层的治安机构——上接州县、下抵村坊，管的是最琐碎、最吃力不讨好的事。
 
 陈巡检就是这个巡检司的九品小官。他每天面对的不是江洋大盗，是丢了一只鸡来找官府的农妇、两个为田埂打起来的宗族、上面压下来的考核指标、下面报不上去的案卷。
