@@ -42,3 +42,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{ou
 
 /* P1/P2 details */
 .prose.hide-duplicate-deck>p:first-of-type{display:none}.dossier-meta{align-items:center}.status-chip{padding:.18rem .55rem;border:1px solid #e4c6be;background:#f8e9e4;color:var(--rust-dark);font:900 .68rem var(--sans)}.role-legend{display:flex;flex-wrap:wrap;gap:.45rem;align-items:center;margin-top:1rem;color:var(--muted);font:700 .68rem var(--sans)}.role-legend b{padding:.14rem .45rem;border:1px solid var(--line);background:#fffdfa;color:var(--ink);font-weight:900}.series-panel{margin-top:1.2rem;background:#fffdfa}.about-reading .prose h2{margin-top:2.6rem}
+
+/* audit fixes */
+.reading h1{font-size:clamp(3rem,5.2vw,5.6rem);letter-spacing:-.045em}
+@media (max-width:720px){.reading h1{font-size:clamp(2.55rem,10vw,3.7rem)}}

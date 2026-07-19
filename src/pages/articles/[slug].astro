@@ -22,7 +22,7 @@ const rawBody = String((entry as any).body ?? "");
 const withoutH1 = rawBody.replace(/^#\s+.*(?:\r?\n)+/, "");
 const firstParagraph = withoutH1.split(/\r?\n\s*\r?\n/).map((part) => part.trim()).find(Boolean) ?? "";
 const hideDuplicateDeck = Boolean(entry.data.summary && firstParagraph && (firstParagraph === entry.data.summary.trim() || firstParagraph.startsWith(entry.data.summary.trim())));
-const readingMinutes = Math.max(1, Math.round(rawBody.replace(/[#*\-\[\]()/>`]/g, "").length / 450));
+const readingMinutes = Math.max(2, Math.round(rawBody.replace(/[#*\-\[\]()/>`]/g, "").length / 380));
 ---
 
 <BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>

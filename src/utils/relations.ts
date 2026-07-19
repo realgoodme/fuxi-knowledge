@@ -27,7 +27,7 @@ export async function getTopicRelations(): Promise<TopicRelation[]> {
     for (const line of body.split(/\r?\n/)) {
       const heading = line.match(/^##\s+(.+)$/);
       if (heading) section = heading[1];
-      for (const match of line.matchAll(/\/?articles\/([a-z0-9-]+)\//g)) {
+      for (const match of line.matchAll(/articles\/([a-z0-9-]+)\//g)) {
         const articleId = match[1];
         if (!roleByArticle[articleId]) roleByArticle[articleId] = roleForSection(section);
       }
