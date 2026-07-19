@@ -1,0 +1,34 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const base = import.meta.env.BASE_URL;
+---
+
+<BaseLayout title="搜索｜朴散的思想仓库" description="搜索朴散的思想仓库里的文章、摘要、系列与主题。">
+  <section class="archive-hero search-hero">
+    <p class="eyebrow">SEARCH THE ARCHIVE</p>
+    <div><h1>搜索</h1><p>搜标题、摘要、系列，也搜文章被织入的主题。</p></div>
+    <span>STATIC INDEX</span>
+  </section>
+  <section class="search-page" data-index-url={`${base}search-index.json`}>
+    <label class="search-box"><span>关键词</span><input data-site-search type="search" placeholder="例如：协调 / 悟性 / AI 学习之路" autofocus /></label>
+    <p class="search-hint" data-search-hint>输入后开始筛选；这是纯静态索引，不上传任何内容。</p>
+    <div class="search-results" data-search-results></div>
+  </section>
+  <script is:inline>
+    const page = document.querySelector("[data-index-url]");
+    const input = document.querySelector("[data-site-search]");
+    const results = document.querySelector("[data-search-results]");
+    const hint = document.querySelector("[data-search-hint]");
+    let index = [];
+    const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
+    const render = () => {
+      const query = (input?.value ?? "").trim().toLowerCase();
+      if (!query) { results.innerHTML = ""; hint.textContent = "输入后开始筛选；这是纯静态索引，不上传任何内容。"; return; }
+      const matched = index.filter((item) => `${item.title} ${item.summary} ${item.series} ${item.topic}`.toLowerCase().includes(query)).slice(0, 30);
+      hint.textContent = `${matched.length} 条结果`;
+      results.innerHTML = matched.map((item) => `<a class="search-result" href="${item.url}"><span>${escapeHtml(item.series)}${item.topic ? ` · 主题：${escapeHtml(item.topic)}` : ""}</span><strong>${escapeHtml(item.title)}</strong><em>${escapeHtml(item.summary)}</em><time>${item.date}</time></a>`).join("");
+    };
+    fetch(page.dataset.indexUrl).then((response) => response.json()).then((data) => { index = data; render(); }).catch(() => { hint.textContent = "搜索索引加载失败，请稍后再试。"; });
+    input?.addEventListener("input", render);
+  </script>
+</BaseLayout>

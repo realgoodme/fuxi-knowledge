@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#F4EFE6"/>
+  <rect x="70" y="70" width="1060" height="490" fill="none" stroke="#151512" stroke-width="3"/>
+  <rect x="104" y="104" width="74" height="74" fill="#A63A2A"/>
+  <text x="141" y="154" text-anchor="middle" font-family="serif" font-size="46" font-weight="700" fill="#F4EFE6">朴</text>
+  <text x="104" y="300" font-family="serif" font-size="76" font-weight="900" fill="#151512">朴散的思想仓库</text>
+  <text x="104" y="372" font-family="serif" font-size="34" font-weight="700" fill="#7F281C">把观察写下来，让经验留下来。</text>
+  <text x="104" y="506" font-family="Arial, sans-serif" font-size="22" letter-spacing="6" fill="#6F6A60">PUSANZ · WRITING ARCHIVE</text>
+</svg>

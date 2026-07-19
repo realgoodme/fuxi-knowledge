@@ -21,7 +21,8 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={`${Astro.site ?? "https://realgoodme.github.io"}${base}og-default.svg`} />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body>
@@ -36,7 +37,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.
           <a href={`${base}topics/`}>主题</a>
           <a href={`${base}topics/daming-xunjiansi/`}>系列</a>
           <a href={`${base}about/`}>关于</a>
-          <a href={`${base}articles/#archive-search`}>搜索</a>
+          <a href={`${base}search/`}>搜索</a>
         </nav>
       </header>
       <main><slot /></main>
