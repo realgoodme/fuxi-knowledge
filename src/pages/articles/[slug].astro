@@ -16,9 +16,13 @@ const articles = (await getCollection("articles")).sort((a, b) => (b.data.public
 const currentIndex = articles.findIndex((article) => article.id === entry.id);
 const newer = currentIndex > 0 ? articles[currentIndex - 1] : undefined;
 const older = currentIndex >= 0 && currentIndex < articles.length - 1 ? articles[currentIndex + 1] : undefined;
+const sameSeries = articles.filter((article) => article.id !== entry.id && article.data.series && article.data.series === entry.data.series).slice(0, 3);
 const wovenTopics = (await getTopicRelations()).filter((topic) => topic.articleIds.includes(entry.id));
-const bodyText = String((entry as any).body ?? entry.data.summary ?? "");
-const readingMinutes = Math.max(1, Math.round(bodyText.replace(/[#*\-\[\]()/>`]/g, "").length / 450));
+const rawBody = String((entry as any).body ?? "");
+const withoutH1 = rawBody.replace(/^#\s+.*(?:\r?\n)+/, "");
+const firstParagraph = withoutH1.split(/\r?\n\s*\r?\n/).map((part) => part.trim()).find(Boolean) ?? "";
+const hideDuplicateDeck = Boolean(entry.data.summary && firstParagraph && (firstParagraph === entry.data.summary.trim() || firstParagraph.startsWith(entry.data.summary.trim())));
+const readingMinutes = Math.max(1, Math.round(rawBody.replace(/[#*\-\[\]()/>`]/g, "").length / 450));
 ---
 
 <BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
@@ -35,7 +39,7 @@ const readingMinutes = Math.max(1, Math.round(bodyText.replace(/[#*\-\[\]()/>`]/
         {entry.data.tags.length > 0 && <div class="tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>}
       </div>
     </header>
-    <div class="prose"><Content /></div>
+    <div class:list={["prose", hideDuplicateDeck && "hide-duplicate-deck"]}><Content /></div>
 
     {wovenTopics.length > 0 && (
       <aside class="woven-panel" aria-label="本文被织入">
@@ -43,9 +47,16 @@ const readingMinutes = Math.max(1, Math.round(bodyText.replace(/[#*\-\[\]()/>`]/
         {wovenTopics.map((topic) => (
           <a class="woven-row" href={`${base}topics/${topic.id}/`}>
             <strong>主题：{topic.title}</strong>
-            <span>{topic.status} · 共 {topic.count} 篇相关文章</span>
+            <span>角色：{topic.roleByArticle[entry.id] ?? "相关记录"} · {topic.status} · 共 {topic.count} 篇相关文章</span>
           </a>
         ))}
+      </aside>
+    )}
+
+    {sameSeries.length > 0 && (
+      <aside class="woven-panel series-panel" aria-label="同系列文章">
+        <h2>同系列继续读</h2>
+        {sameSeries.map((article) => <a class="woven-row" href={`${base}articles/${article.id}/`}><strong>{article.data.title}</strong><span>{article.data.series}</span></a>)}
       </aside>
     )}
 

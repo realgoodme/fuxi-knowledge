@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://realgoodme.github.io/fuxi-knowledge/sitemap.xml

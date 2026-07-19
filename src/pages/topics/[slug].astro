@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getTopicRelations } from "../../utils/relations";
 
 export async function getStaticPaths() {
   return (await getCollection("topics")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
@@ -11,6 +12,7 @@ const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
 const date = entry.data.updated;
 const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
+const relation = (await getTopicRelations()).find((topic) => topic.id === entry.id);
 ---
 
 <BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
@@ -20,7 +22,14 @@ const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric"
       <div class="reading-record"><span>DOSSIER / {String(entry.data.publicOrder ?? 0).padStart(2, "0")}</span><span>主题编织</span></div>
       <h1>{entry.data.title}</h1>
       {entry.data.summary && <p class="reading-deck">{entry.data.summary}</p>}
-      {formattedDate && <div class="reading-meta"><time datetime={date.toISOString()}>最近修订 · {formattedDate}</time></div>}
+      <div class="reading-meta dossier-meta">
+        <span class="status-chip">{relation?.status ?? "编织中"}</span>
+        <span>{relation?.count ?? 0} 篇相关文章</span>
+        {formattedDate && <time datetime={date.toISOString()}>最近修订 · {formattedDate}</time>}
+      </div>
+      <div class="role-legend" aria-label="角色图例">
+        <span>角色图例：</span><b>支持结论</b><b>给出案例</b><b>提供反例</b><b>待修订线索</b>
+      </div>
     </header>
     <div class="prose"><Content /></div>
     <footer class="reading-end"><span>— LIVING DOSSIER —</span><a href={`${base}topics/`}>浏览其他主题 →</a></footer>

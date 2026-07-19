@@ -16,6 +16,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    <link rel="alternate" type="application/rss+xml" title="朴散的思想仓库 RSS" href={`${base}rss.xml`} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
@@ -34,7 +35,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.
           <a href={`${base}articles/`}>文章</a>
           <a href={`${base}topics/`}>主题</a>
           <a href={`${base}topics/daming-xunjiansi/`}>系列</a>
-          <a href={`${base}#about`}>关于</a>
+          <a href={`${base}about/`}>关于</a>
           <a href={`${base}articles/#archive-search`}>搜索</a>
         </nav>
       </header>

@@ -1,0 +1,24 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="关于｜朴散的思想仓库" description="关于朴散的思想仓库：写作原则、公开范围与修订方式。">
+  <article class="reading about-reading">
+    <a class="reading-back" href={import.meta.env.BASE_URL}>← 返回首页</a>
+    <header class="reading-header">
+      <div class="reading-record"><span>ABOUT</span><span>公开档案说明</span></div>
+      <h1>写作不是输出，是留下可回看的证据。</h1>
+      <p class="reading-deck">完整知识库只在本地维护；这里仅公开原创文章与已沉淀成形的主题。每一次公开，都是一次对经验的重新整理。</p>
+    </header>
+    <div class="prose">
+      <h2>这里放什么</h2>
+      <p>故事、观察，以及不急着下结论的思考。文章是现场，主题是判断，系列是连续叙事。</p>
+      <h2>怎么读</h2>
+      <p>如果只想随便看，从“读最新一篇”开始；如果想追踪一个判断如何长大，从主题地图进入，看证据、反例和待修订问题。</p>
+      <h2>公开原则</h2>
+      <p>不公开未脱敏的工作细节，不公开他人隐私，不把一时情绪写成最终结论。所有文章都可能继续修订。</p>
+      <h2>联系</h2>
+      <p>本站为静态公开档案，暂不开评论。若你发现事实错误或链接失效，可以在 GitHub 仓库提交 issue。</p>
+    </div>
+  </article>
+</BaseLayout>

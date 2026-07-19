@@ -1,0 +1,16 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout title="404｜朴散的思想仓库">
+  <article class="reading">
+    <header class="reading-header">
+      <div class="reading-record"><span>404</span><span>档案未找到</span></div>
+      <h1>这一页还没有被公开。</h1>
+      <p class="reading-deck">可能是链接写错了，也可能是这篇档案仍留在本地知识库里。</p>
+    </header>
+    <div class="prose">
+      <p><a href={import.meta.env.BASE_URL}>返回首页</a>，或去 <a href={`${import.meta.env.BASE_URL}articles/`}>文章目录</a> 继续找。</p>
+    </div>
+  </article>
+</BaseLayout>
