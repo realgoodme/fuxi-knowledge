@@ -1,5 +1,6 @@
 import { getCollection } from "astro:content";
 import { getArticleTopicMap } from "../utils/relations";
+import { entryDate } from "../utils/dates";
 
 const base = "/fuxi-knowledge";
 
@@ -12,7 +13,7 @@ export async function GET() {
     summary: entry.data.summary ?? "",
     series: entry.data.series ?? "原创文章",
     topic: topicMap.get(entry.id)?.title ?? "",
-    date: (entry.data.date ?? entry.data.ingested)?.toISOString().slice(0, 10) ?? "",
+    date: entryDate(entry)?.toISOString().slice(0, 10) ?? "",
     url: `${base}/articles/${entry.id}/`,
   }));
   return new Response(JSON.stringify(payload), { headers: { "Content-Type": "application/json; charset=utf-8" } });

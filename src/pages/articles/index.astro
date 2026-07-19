@@ -3,11 +3,12 @@ import { getCollection } from "astro:content";
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getArticleTopicMap } from "../../utils/relations";
+import { entryDate } from "../../utils/dates";
 
 const articles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
 const topicMap = await getArticleTopicMap();
 const seriesOptions = [...new Set(articles.map((entry) => entry.data.series).filter(Boolean))];
-const yearOptions = [...new Set(articles.map((entry) => (entry.data.date ?? entry.data.ingested)?.getFullYear()).filter(Boolean))].sort((a, b) => b - a);
+const yearOptions = [...new Set(articles.map((entry) => entryDate(entry)?.getFullYear()).filter(Boolean))].sort((a, b) => b - a);
 ---
 
 <BaseLayout title="文章｜朴散的思想仓库">
@@ -28,7 +29,7 @@ const yearOptions = [...new Set(articles.map((entry) => (entry.data.date ?? entr
     <div class="card-grid">
       {articles.map((entry, index) => {
         const topic = topicMap.get(entry.id);
-        const year = (entry.data.date ?? entry.data.ingested)?.getFullYear() ?? "";
+        const year = entryDate(entry)?.getFullYear() ?? "";
         const searchText = `${entry.data.title} ${entry.data.summary ?? ""} ${entry.data.series ?? ""} ${topic?.title ?? ""}`;
         return (
           <div class="archive-item" data-search={searchText} data-series={entry.data.series ?? ""} data-year={year}>

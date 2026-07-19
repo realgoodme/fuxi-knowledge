@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getTopicRelations } from "../../utils/relations";
+import { entryDate } from "../../utils/dates";
 
 export async function getStaticPaths() {
   return (await getCollection("articles")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
@@ -10,7 +11,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
-const date = entry.data.date ?? entry.data.ingested;
+const date = entryDate(entry);
 const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
 const articles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
 const currentIndex = articles.findIndex((article) => article.id === entry.id);
