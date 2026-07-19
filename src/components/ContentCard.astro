@@ -13,7 +13,7 @@ const number = String(index).padStart(2, "0");
     <span>{number}</span>
   </div>
   {kind === "article" && topicTitle && <div class="card-topic">主题：{topicTitle}</div>}
-  {kind === "topic" && <div class="card-topic">{topicCount ?? 0} 篇 · {topicStatus ?? "编织中"}</div>}
+  {kind === "topic" && <div class="card-topic">{topicCount ? `${topicCount} 篇 · ${topicStatus ?? "编织中"}` : `待补文章 · ${topicStatus ?? "编织中"}`}</div>}
   <h3><a href={href}>{entry.data.title}</a></h3>
   {entry.data.summary && <p>{entry.data.summary}</p>}
   <div class="card-footer">
