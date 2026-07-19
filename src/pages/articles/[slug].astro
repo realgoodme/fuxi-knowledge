@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getTopicRelations } from "../../utils/relations";
 
 export async function getStaticPaths() {
   return (await getCollection("articles")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
@@ -11,21 +12,50 @@ const { Content } = await render(entry);
 const base = import.meta.env.BASE_URL;
 const date = entry.data.date ?? entry.data.ingested;
 const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
+const articles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
+const currentIndex = articles.findIndex((article) => article.id === entry.id);
+const newer = currentIndex > 0 ? articles[currentIndex - 1] : undefined;
+const older = currentIndex >= 0 && currentIndex < articles.length - 1 ? articles[currentIndex + 1] : undefined;
+const wovenTopics = (await getTopicRelations()).filter((topic) => topic.articleIds.includes(entry.id));
+const bodyText = String((entry as any).body ?? entry.data.summary ?? "");
+const readingMinutes = Math.max(1, Math.round(bodyText.replace(/[#*\-\[\]()/>`]/g, "").length / 450));
 ---
 
 <BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
   <article class="reading">
     <a class="reading-back" href={`${base}articles/`}>← 返回文章目录</a>
     <header class="reading-header">
-      <div class="reading-record"><span>ARTICLE / {String(entry.data.publicOrder ?? 0).padStart(2, "0")}</span><span>{entry.data.series ?? "原创文章"}</span></div>
+      <div class="reading-record"><span>ARTICLE / {String(entry.data.publicOrder ?? 0).padStart(2, "0")}</span><span>{entry.data.series ?? "原创文章"}</span>{wovenTopics[0] && <span>所属主题：{wovenTopics[0].title}</span>}</div>
       <h1>{entry.data.title}</h1>
       {entry.data.summary && <p class="reading-deck">{entry.data.summary}</p>}
       <div class="reading-meta">
         {formattedDate && <time datetime={date.toISOString()}>{formattedDate}</time>}
+        <span>约 {readingMinutes} 分钟</span>
+        <span>公开版本 v1</span>
         {entry.data.tags.length > 0 && <div class="tags">{entry.data.tags.map((tag) => <span>{tag}</span>)}</div>}
       </div>
     </header>
     <div class="prose"><Content /></div>
-    <footer class="reading-end"><span>— END OF ENTRY —</span><a href={`${base}articles/`}>继续阅读其他文章 →</a></footer>
+
+    {wovenTopics.length > 0 && (
+      <aside class="woven-panel" aria-label="本文被织入">
+        <h2>本文被织入</h2>
+        {wovenTopics.map((topic) => (
+          <a class="woven-row" href={`${base}topics/${topic.id}/`}>
+            <strong>主题：{topic.title}</strong>
+            <span>{topic.status} · 共 {topic.count} 篇相关文章</span>
+          </a>
+        ))}
+      </aside>
+    )}
+
+    <footer class="reading-end">
+      <span>公开版本 v1 · 修订记录</span>
+      <nav class="reading-neighbors" aria-label="继续阅读">
+        {older && <a href={`${base}articles/${older.id}/`}>← 上一篇：{older.data.title}</a>}
+        {newer && <a href={`${base}articles/${newer.id}/`}>下一篇：{newer.data.title} →</a>}
+        <a href={`${base}articles/`}>返回目录</a>
+      </nav>
+    </footer>
   </article>
 </BaseLayout>

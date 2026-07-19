@@ -2,8 +2,10 @@
 import { getCollection } from "astro:content";
 import ContentCard from "../../components/ContentCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getTopicRelations } from "../../utils/relations";
 
 const topics = (await getCollection("topics")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
+const relationMap = new Map((await getTopicRelations()).map((relation) => [relation.id, relation]));
 ---
 
 <BaseLayout title="主题｜朴散的思想仓库">
@@ -12,5 +14,5 @@ const topics = (await getCollection("topics")).sort((a, b) => (b.data.publicOrde
     <div><h1>主题地图</h1><p>把零散文章往回织，留下可以反复使用、也允许持续被修订的判断。</p></div>
     <span>{String(topics.length).padStart(2, "0")} DOSSIERS</span>
   </section>
-  <section class="archive-section archive-listing"><div class="card-grid topic-grid">{topics.map((entry, index) => <ContentCard entry={entry} kind="topic" index={index + 1} />)}</div></section>
+  <section class="archive-section archive-listing"><div class="card-grid topic-grid">{topics.map((entry, index) => <ContentCard entry={entry} kind="topic" index={index + 1} topicCount={relationMap.get(entry.id)?.count} topicStatus={relationMap.get(entry.id)?.status} />)}</div></section>
 </BaseLayout>

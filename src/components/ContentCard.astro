@@ -1,5 +1,5 @@
 ---
-const { entry, kind = "article", index = 1 } = Astro.props;
+const { entry, kind = "article", index = 1, topicTitle, topicCount, topicStatus } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const href = `${base}${kind === "topic" ? "topics" : "articles"}/${entry.id}/`;
 const date = entry.data.date ?? entry.data.updated ?? entry.data.ingested;
@@ -12,6 +12,8 @@ const number = String(index).padStart(2, "0");
     <span>{kind === "topic" ? "主题档案" : entry.data.series ?? "原创文章"}</span>
     <span>{number}</span>
   </div>
+  {kind === "article" && topicTitle && <div class="card-topic">主题：{topicTitle}</div>}
+  {kind === "topic" && <div class="card-topic">{topicCount ?? 0} 篇 · {topicStatus ?? "编织中"}</div>}
   <h3><a href={href}>{entry.data.title}</a></h3>
   {entry.data.summary && <p>{entry.data.summary}</p>}
   <div class="card-footer">

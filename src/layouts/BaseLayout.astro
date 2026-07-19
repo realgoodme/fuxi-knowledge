@@ -6,6 +6,7 @@ const {
   title = "朴散的思想仓库",
   description = "一个警察写作者的观察、故事与 AI 实践。",
 } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.github.io").href;
 ---
 
 <!doctype html>
@@ -14,6 +15,12 @@ const {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
     <title>{title}</title>
   </head>
   <body>
@@ -26,8 +33,9 @@ const {
         <nav aria-label="主导航">
           <a href={`${base}articles/`}>文章</a>
           <a href={`${base}topics/`}>主题</a>
-          <a href={`${base}topics/daming-xunjiansi/`}>陈巡检</a>
+          <a href={`${base}topics/daming-xunjiansi/`}>系列</a>
           <a href={`${base}#about`}>关于</a>
+          <a href={`${base}articles/#archive-search`}>搜索</a>
         </nav>
       </header>
       <main><slot /></main>
