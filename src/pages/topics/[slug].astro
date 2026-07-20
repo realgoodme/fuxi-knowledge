@@ -15,7 +15,7 @@ const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric"
 const relation = (await getTopicRelations()).find((topic) => topic.id === entry.id);
 ---
 
-<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
+<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary} ogImage={`${base}og/topics/${entry.id}.svg`}>
   <article class="reading topic-reading">
     <a class="reading-back" href={`${base}topics/`}>← 返回主题地图</a>
     <header class="reading-header">

@@ -5,6 +5,7 @@ const base = import.meta.env.BASE_URL;
 const {
   title = "朴散的思想仓库",
   description = "一个警察写作者的观察、故事与 AI 实践。",
+  ogImage,
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.github.io").href;
 ---
@@ -21,7 +22,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site ?? "https://realgoodme.
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={`${Astro.site ?? "https://realgoodme.github.io"}${base}og-default.svg`} />
+    <meta property="og:image" content={new URL(ogImage ?? `${base}og-default.svg`, Astro.site ?? "https://realgoodme.github.io").href} />
     <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>

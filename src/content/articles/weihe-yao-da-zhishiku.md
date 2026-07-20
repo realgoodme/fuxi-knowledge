@@ -1,6 +1,7 @@
 ---
 title: "为什么 AI 越强，我越要搭自己的知识库"
 summary: "昨天的文章，有人问我两个问题："
+date: 2026-06-21
 publicOrder: 13
 series: "AI 学习之路"
 ---
