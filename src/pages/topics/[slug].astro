@@ -2,6 +2,7 @@
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getTopicRelations } from "../../utils/relations";
+import { displayTitle } from "../../utils/title";
 
 export async function getStaticPaths() {
   return (await getCollection("topics")).map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
@@ -13,9 +14,12 @@ const base = import.meta.env.BASE_URL;
 const date = entry.data.updated;
 const formattedDate = date && new Intl.DateTimeFormat("zh-CN", { year: "numeric", month: "long", day: "numeric" }).format(date);
 const relation = (await getTopicRelations()).find((topic) => topic.id === entry.id);
+const articles = await getCollection("articles");
+const articleById = new Map(articles.map((article) => [article.id, article]));
+const relatedArticles = (relation?.articleIds ?? []).map((articleId) => ({ article: articleById.get(articleId), role: relation?.roleByArticle[articleId] ?? "相关记录" })).filter((item) => item.article);
 ---
 
-<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary} ogImage={`${base}og/topics/${entry.id}.svg`}>
+<BaseLayout title={`${entry.data.title}｜朴散的思想仓库`} description={entry.data.summary}>
   <article class="reading topic-reading">
     <a class="reading-back" href={`${base}topics/`}>← 返回主题地图</a>
     <header class="reading-header">
@@ -32,6 +36,17 @@ const relation = (await getTopicRelations()).find((topic) => topic.id === entry.
       </div>
     </header>
     <div class="prose"><Content /></div>
+    {relatedArticles.length > 0 && (
+      <section class="related-roles" aria-label="相关文章与角色">
+        <h2>相关文章与角色</h2>
+        {relatedArticles.map(({ article, role }) => (
+          <a class="related-role-row" href={`${base}articles/${article.id}/`}>
+            <strong>{displayTitle(article.data.title)}</strong>
+            <span>{role}</span>
+          </a>
+        ))}
+      </section>
+    )}
     <footer class="reading-end"><span>— LIVING DOSSIER —</span><a href={`${base}topics/`}>浏览其他主题 →</a></footer>
   </article>
 </BaseLayout>

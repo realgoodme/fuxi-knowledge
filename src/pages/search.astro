@@ -1,6 +1,12 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { getTopicRelations } from "../utils/relations";
+import { displayTitle } from "../utils/title";
 const base = import.meta.env.BASE_URL;
+const latestArticles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0)).slice(0, 5);
+const hotTopics = (await getTopicRelations()).filter((topic) => topic.count > 0).slice(0, 3);
+const popularWords = ["协调", "悟性", "AI 学习之路", "知识库"];
 ---
 
 <BaseLayout title="搜索｜朴散的思想仓库" description="搜索朴散的思想仓库里的文章、摘要、系列与主题。">
@@ -12,6 +18,13 @@ const base = import.meta.env.BASE_URL;
   <section class="search-page" data-index-url={`${base}search-index.json`}>
     <label class="search-box"><span>关键词</span><input data-site-search type="search" placeholder="例如：协调 / 悟性 / AI 学习之路" autofocus /></label>
     <p class="search-hint" data-search-hint>输入后开始筛选；这是纯静态索引，不上传任何内容。</p>
+    <div class="search-default" data-search-default>
+      <div class="popular-searches"><span>热门：</span>{popularWords.map((word) => <button type="button" data-popular={word}>{word}</button>)}</div>
+      <div class="search-default-grid">
+        <section><h2>最新文章</h2>{latestArticles.map((entry) => <a href={`${base}articles/${entry.id}/`}>{displayTitle(entry.data.title)}</a>)}</section>
+        <section><h2>正在编织</h2>{hotTopics.map((topic) => <a href={`${base}topics/${topic.id}/`}>{topic.title}<span>{topic.count} 篇 · {topic.status}</span></a>)}</section>
+      </div>
+    </div>
     <div class="search-results" data-search-results></div>
   </section>
   <script is:inline>
@@ -19,10 +32,12 @@ const base = import.meta.env.BASE_URL;
     const input = document.querySelector("[data-site-search]");
     const results = document.querySelector("[data-search-results]");
     const hint = document.querySelector("[data-search-hint]");
+    const defaultPanel = document.querySelector("[data-search-default]");
     let index = [];
     const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
     const render = () => {
       const query = (input?.value ?? "").trim().toLowerCase();
+      if (defaultPanel) defaultPanel.style.display = query ? "none" : "";
       if (!query) { results.innerHTML = ""; hint.textContent = "输入后开始筛选；这是纯静态索引，不上传任何内容。"; return; }
       const matched = index.filter((item) => `${item.title} ${item.summary} ${item.series} ${item.topic}`.toLowerCase().includes(query)).slice(0, 30);
       hint.textContent = `${matched.length} 条结果`;
@@ -30,5 +45,6 @@ const base = import.meta.env.BASE_URL;
     };
     fetch(page.dataset.indexUrl).then((response) => response.json()).then((data) => { index = data; render(); }).catch(() => { hint.textContent = "搜索索引加载失败，请稍后再试。"; });
     input?.addEventListener("input", render);
+    document.querySelectorAll("[data-popular]").forEach((button) => button.addEventListener("click", () => { input.value = button.dataset.popular; input.dispatchEvent(new Event("input")); input.focus(); }));
   </script>
 </BaseLayout>

@@ -3,6 +3,7 @@ import { getCollection } from "astro:content";
 import ContentCard from "../components/ContentCard.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getArticleTopicMap, getTopicRelations } from "../utils/relations";
+import { displayTitle } from "../utils/title";
 
 const base = import.meta.env.BASE_URL;
 const byOrder = (a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0);
@@ -39,7 +40,7 @@ const featuredTopic = featured ? topicMap.get(featured.id) : undefined;
         <h2>本期线索</h2>
         {featured && (
           <a class="clue-row" href={`${base}articles/${featured.id}/`}>
-            <strong>最新文章：{featured.data.title}</strong>
+            <strong>最新文章：{displayTitle(featured.data.title)}</strong>
             <span>{featuredTopic ? `所属主题：${featuredTopic.title}` : featured.data.series ?? "原创文章"}</span>
           </a>
         )}
@@ -70,7 +71,7 @@ const featuredTopic = featured ? topicMap.get(featured.id) : undefined;
         <div>
           <p class="eyebrow">{featured.data.series ?? "原创文章"}</p>
           {featuredTopic && <p class="featured-topic">所属主题：{featuredTopic.title}</p>}
-          <h2><a href={`${base}articles/${featured.id}/`}>{featured.data.title}</a></h2>
+          <h2><a href={`${base}articles/${featured.id}/`}>{displayTitle(featured.data.title)}</a></h2>
           <p>{featured.data.summary}</p>
           <a class="text-link" href={`${base}articles/${featured.id}/`}>打开这篇文章 <span>→</span></a>
           {featuredTopic && <a class="text-link" href={`${base}topics/${featuredTopic.id}/`}>查看所属主题 <span>→</span></a>}
@@ -97,7 +98,7 @@ const featuredTopic = featured ? topicMap.get(featured.id) : undefined;
           <div class="thread-line">
             <a class="thread-topic" href={`${base}topics/${relation.id}/`}>{relation.title}</a>
             <span>├─</span>
-            <a href={`${base}articles/${relation.articleIds[0]}/`}>{articleById.get(relation.articleIds[0])?.data.title ?? relation.articleIds[0]}</a>
+            <a href={`${base}articles/${relation.articleIds[0]}/`}>{displayTitle(articleById.get(relation.articleIds[0])?.data.title ?? relation.articleIds[0])}</a>
           </div>
         ))}
       </div>

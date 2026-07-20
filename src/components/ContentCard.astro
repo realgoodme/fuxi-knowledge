@@ -1,5 +1,6 @@
 ---
 import { entryDate } from "../utils/dates";
+import { displayTitle } from "../utils/title";
 const { entry, kind = "article", index = 1, topicTitle, topicCount, topicStatus } = Astro.props;
 const base = import.meta.env.BASE_URL;
 const href = `${base}${kind === "topic" ? "topics" : "articles"}/${entry.id}/`;
@@ -15,10 +16,10 @@ const number = String(index).padStart(2, "0");
   </div>
   {kind === "article" && topicTitle && <div class="card-topic">主题：{topicTitle}</div>}
   {kind === "topic" && <div class="card-topic">{topicCount ? `${topicCount} 篇 · ${topicStatus ?? "编织中"}` : `待补文章 · ${topicStatus ?? "编织中"}`}</div>}
-  <h3><a href={href}>{entry.data.title}</a></h3>
+  <h3><a href={href}>{displayTitle(entry.data.title)}</a></h3>
   {entry.data.summary && <p>{entry.data.summary}</p>}
   <div class="card-footer">
     {formattedDate ? <time datetime={date.toISOString()}>{kind === "topic" ? `更新 ${formattedDate}` : formattedDate}</time> : <span>长期存档</span>}
-    <a class="card-arrow" href={href} aria-label={`阅读：${entry.data.title}`}>↗</a>
+    <a class="card-arrow" href={href} aria-label={`阅读：${displayTitle(entry.data.title)}`}>↗</a>
   </div>
 </article>

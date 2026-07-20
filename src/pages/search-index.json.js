@@ -1,6 +1,7 @@
 import { getCollection } from "astro:content";
 import { getArticleTopicMap } from "../utils/relations";
 import { entryDate } from "../utils/dates";
+import { displayTitle } from "../utils/title";
 
 const base = "/fuxi-knowledge";
 
@@ -9,7 +10,7 @@ export async function GET() {
   const topicMap = await getArticleTopicMap();
   const payload = articles.map((entry) => ({
     id: entry.id,
-    title: entry.data.title,
+    title: displayTitle(entry.data.title),
     summary: entry.data.summary ?? "",
     series: entry.data.series ?? "原创文章",
     topic: topicMap.get(entry.id)?.title ?? "",
