@@ -6,7 +6,7 @@ fetched: 2026-06-22
 type: article
 summary: "书接上回。"
 publicOrder: 12
-series: "朴散原创"
+series: "二狗的幸福生活"
 ---
 # 二狗的幸福生活之公安局的来电
 

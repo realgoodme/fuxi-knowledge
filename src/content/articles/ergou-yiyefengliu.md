@@ -6,7 +6,7 @@ fetched: 2026-06-21 23:00
 type: article
 summary: "那是一个漆黑的夜晚，秋夜微凉。"
 publicOrder: 8
-series: "朴散原创"
+series: "二狗的幸福生活"
 ---
 # 二狗的一夜风流
 

@@ -6,7 +6,7 @@ fetched: 2026-06-22
 type: article
 summary: "《二狗的幸福生活》"
 publicOrder: 11
-series: "朴散原创"
+series: "二狗的幸福生活"
 ---
 # 二狗的第4次转账：5天被骗4次21万，根本劝不住......
 
