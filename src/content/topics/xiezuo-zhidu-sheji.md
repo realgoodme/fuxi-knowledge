@@ -16,9 +16,9 @@ series: "主题编织"
 
 ## 证据
 
-- [形成共识不是一件容易的事](/articles/xingcheng-gongshi-bu-rongyi/)：把常识当共识会造成偏差；目标、标准和要求需要表达与确认。
-- [要敢于协调、善于协调](/articles/yao-ganyu-xietiao/)：协调应从吃透任务、厘清职责、必要时升级决策开始，目的是让事情推进。
-- [有人的地方就有江湖](/articles/youren-de-difang-jiu-you-jianghu/)：涉及利益的分配若缺少制度，容易伤害公平感与团队信任。
+- [形成共识不是一件容易的事](/fuxi-knowledge/articles/xingcheng-gongshi-bu-rongyi/)：把常识当共识会造成偏差；目标、标准和要求需要表达与确认。
+- [要敢于协调、善于协调](/fuxi-knowledge/articles/yao-ganyu-xietiao/)：协调应从吃透任务、厘清职责、必要时升级决策开始，目的是让事情推进。
+- [有人的地方就有江湖](/fuxi-knowledge/articles/youren-de-difang-jiu-you-jianghu/)：涉及利益的分配若缺少制度，容易伤害公平感与团队信任。
 
 ## 反例或矛盾
 

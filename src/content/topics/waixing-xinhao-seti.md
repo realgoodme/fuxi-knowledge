@@ -37,4 +37,4 @@ SETI研究所2026年研究（发表在《天体物理学杂志》）：恒星风
 
 ## 关联
 
-- [反常识写作方法](/topics/fanchangshi-xiezuo/) — 这种「反常识+科学依据」的写法
+- [反常识写作方法](/fuxi-knowledge/topics/fanchangshi-xiezuo/) — 这种「反常识+科学依据」的写法

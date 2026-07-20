@@ -32,10 +32,10 @@ series: "主题编织"
 
 ## 2026-07-18 恢复条目补充
 
-- [先从五分钟脱稿练起](/articles/xian-cong-5-fenzhong-tuogao/)验证了“从五分钟开始”的训练尺度：小到可以天天做，长到足以检验结构和表达。
-- [真正想干成的事，就是我们人生的锚点](/articles/zhenxiang-gancheng-de-shi/)补上目标层：长期锚点要转成近期可交付的一步，才能避免成为空泛愿望。
-- [忘我而无用的专注](/articles/wangwo-er-wuyong-de-zhuanzhu/)提醒，行动单元不该只追求产出；单任务投入和主动恢复共同决定能否长期坚持。
+- [先从五分钟脱稿练起](/fuxi-knowledge/articles/xian-cong-5-fenzhong-tuogao/)验证了“从五分钟开始”的训练尺度：小到可以天天做，长到足以检验结构和表达。
+- [真正想干成的事，就是我们人生的锚点](/fuxi-knowledge/articles/zhenxiang-gancheng-de-shi/)补上目标层：长期锚点要转成近期可交付的一步，才能避免成为空泛愿望。
+- [忘我而无用的专注](/fuxi-knowledge/articles/wangwo-er-wuyong-de-zhuanzhu/)提醒，行动单元不该只追求产出；单任务投入和主动恢复共同决定能否长期坚持。
 
 ## 关联
 
-- [图书馆5小时定律](/topics/tushuguan-5xiaoshi-dinglv/) — 行动单元思维在时间管理上的具体应用
+- [图书馆5小时定律](/fuxi-knowledge/topics/tushuguan-5xiaoshi-dinglv/) — 行动单元思维在时间管理上的具体应用

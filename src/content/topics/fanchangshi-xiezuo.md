@@ -75,17 +75,17 @@ series: "主题编织"
 
 ### 关联文章
 
-- [二狗的一夜风流](/articles/ergou-yiyefengliu/) — 二狗的一夜风流（约炮APP诈骗）
-- [二狗的清纯之恋](/articles/ergou-qingchun-zhi-lian/) — 二狗的清纯之恋（杀猪盘网恋）
-- [二狗的千里赴爱](/articles/ergou-qianli-fuai/) — 二狗的千里赴爱（投资理财诈骗）
-- [二狗的第4次转账：5天被骗4次21万，根本劝不住......](/articles/ergou-di-4ci-zhuanzhang/) — 二狗的第4次转账（刷单诈骗/偏执心理）
-- [二狗的幸福生活之公安局的来电](/articles/ergou-gonganju-dianlai/) — 二狗之公安局的来电（冒充公检法）
-- [三点思考](/articles/sandian-sikao/) — 三点思考（写作纲领：真实、大局观、文以载道）
+- [二狗的一夜风流](/fuxi-knowledge/articles/ergou-yiyefengliu/) — 二狗的一夜风流（约炮APP诈骗）
+- [二狗的清纯之恋](/fuxi-knowledge/articles/ergou-qingchun-zhi-lian/) — 二狗的清纯之恋（杀猪盘网恋）
+- [二狗的千里赴爱](/fuxi-knowledge/articles/ergou-qianli-fuai/) — 二狗的千里赴爱（投资理财诈骗）
+- [二狗的第4次转账：5天被骗4次21万，根本劝不住......](/fuxi-knowledge/articles/ergou-di-4ci-zhuanzhang/) — 二狗的第4次转账（刷单诈骗/偏执心理）
+- [二狗的幸福生活之公安局的来电](/fuxi-knowledge/articles/ergou-gonganju-dianlai/) — 二狗之公安局的来电（冒充公检法）
+- [三点思考](/fuxi-knowledge/articles/sandian-sikao/) — 三点思考（写作纲领：真实、大局观、文以载道）
 
 ---
 
 ## 关联
 
-- [SETI 与外星信号探测](/topics/waixing-xinhao-seti/) — 反常识写法的典型案例
-- [实践论](/topics/shijianlun/) — 认识论层面的哲学根基
-- [二狗的幸福生活](/topics/ergou-xilie/) — 故事型写法的标志性作品
+- [SETI 与外星信号探测](/fuxi-knowledge/topics/waixing-xinhao-seti/) — 反常识写法的典型案例
+- [实践论](/fuxi-knowledge/topics/shijianlun/) — 认识论层面的哲学根基
+- [二狗的幸福生活](/fuxi-knowledge/topics/ergou-xilie/) — 故事型写法的标志性作品

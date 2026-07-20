@@ -19,11 +19,11 @@ series: "主题编织"
 
 | # | 标题 | 诈骗类型 | 字数 |
 |---|------|---------|------|
-| 1 | [二狗的一夜风流](/articles/ergou-yiyefengliu/) | 约炮APP诈骗（裸聊敲诈） | 2661 |
-| 2 | [二狗的清纯之恋](/articles/ergou-qingchun-zhi-lian/) | 杀猪盘（网恋卖惨） | ~1800 |
-| 3 | [二狗的千里赴爱](/articles/ergou-qianli-fuai/) | 杀猪盘+投资理财诈骗 | 2391 |
-| 4 | [二狗的第4次转账：5天被骗4次21万，根本劝不住......](/articles/ergou-di-4ci-zhuanzhang/) | 刷单诈骗（警察上门都拦不住） | 1899 |
-| 5 | [二狗的幸福生活之公安局的来电](/articles/ergou-gonganju-dianlai/) | 冒充公检法（利用114验证） | 5878 |
+| 1 | [二狗的一夜风流](/fuxi-knowledge/articles/ergou-yiyefengliu/) | 约炮APP诈骗（裸聊敲诈） | 2661 |
+| 2 | [二狗的清纯之恋](/fuxi-knowledge/articles/ergou-qingchun-zhi-lian/) | 杀猪盘（网恋卖惨） | ~1800 |
+| 3 | [二狗的千里赴爱](/fuxi-knowledge/articles/ergou-qianli-fuai/) | 杀猪盘+投资理财诈骗 | 2391 |
+| 4 | [二狗的第4次转账：5天被骗4次21万，根本劝不住......](/fuxi-knowledge/articles/ergou-di-4ci-zhuanzhang/) | 刷单诈骗（警察上门都拦不住） | 1899 |
+| 5 | [二狗的幸福生活之公安局的来电](/fuxi-knowledge/articles/ergou-gonganju-dianlai/) | 冒充公检法（利用114验证） | 5878 |
 
 ## 叙事特点
 
@@ -97,9 +97,9 @@ series: "主题编织"
 - **要有大局观** — 不把反诈写成"防骗指南"，而是写人的弱点和社会的复杂
 - **文以载道** — 反诈故事本身就是对社会现实的反映，比说教更有力量
 
-详见 [三点思考](/articles/sandian-sikao/)
+详见 [三点思考](/fuxi-knowledge/articles/sandian-sikao/)
 
 ## 关联
 
-- [反常识写作方法](/topics/fanchangshi-xiezuo/) — 故事型写法的代表范例
-- [实践论](/topics/shijianlun/) — 二狗的幸福生活展示"认识不修正→反复失败"的实践论反面案例
+- [反常识写作方法](/fuxi-knowledge/topics/fanchangshi-xiezuo/) — 故事型写法的代表范例
+- [实践论](/fuxi-knowledge/topics/shijianlun/) — 二狗的幸福生活展示"认识不修正→反复失败"的实践论反面案例

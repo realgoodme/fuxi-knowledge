@@ -61,9 +61,9 @@ series: "主题编织"
 
 ## 关联
 
-- [反常识写作方法](/topics/fanchangshi-xiezuo/) — 认识论层面的相通
-- [二狗的幸福生活](/topics/ergou-xilie/) — 认识不修正→反复失败的样本
+- [反常识写作方法](/fuxi-knowledge/topics/fanchangshi-xiezuo/) — 认识论层面的相通
+- [二狗的幸福生活](/fuxi-knowledge/topics/ergou-xilie/) — 认识不修正→反复失败的样本
 
 ## 关联文章
 
-- [随笔——读《实践论》小感](/articles/suibi-shiyijianlun-xiaogan/) — 阿 sir 封控期间读《实践论》的随笔（2022年），核心：知行合一、实践出真知
+- [随笔——读《实践论》小感](/fuxi-knowledge/articles/suibi-shiyijianlun-xiaogan/) — 阿 sir 封控期间读《实践论》的随笔（2022年），核心：知行合一、实践出真知

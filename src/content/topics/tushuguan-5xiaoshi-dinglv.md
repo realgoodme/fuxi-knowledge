@@ -39,4 +39,4 @@ series: "主题编织"
 
 ## 关联
 
-- [行动单元思维](/topics/xingdong-danyuan-siwei/) — 更广义的「把大问题切成小块」的思维框架
+- [行动单元思维](/fuxi-knowledge/topics/xingdong-danyuan-siwei/) — 更广义的「把大问题切成小块」的思维框架

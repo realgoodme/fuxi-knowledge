@@ -23,7 +23,7 @@ zhishi（产品名，最早内部代号 fuxi）是阿 sir 自主研发的个人 
 
 > 不是把素材堆进去，而是每次加新素材时，AI 回头更新已有知识之间的关联。
 
-与「收藏夹模式」的根本区别：收藏夹是**堆积**，编译层是**织网**。参见 [反常识写作方法](/topics/fanchangshi-xiezuo/) 中的认知论讨论。
+与「收藏夹模式」的根本区别：收藏夹是**堆积**，编译层是**织网**。参见 [反常识写作方法](/fuxi-knowledge/topics/fanchangshi-xiezuo/) 中的认知论讨论。
 
 ### 2. 进存取三问
 
@@ -33,17 +33,17 @@ zhishi（产品名，最早内部代号 fuxi）是阿 sir 自主研发的个人 
 - **存**（四层）：raw 原料层 → notes 笔记层 → wiki 编译层 → index 索引层
 - **取**（输出）：问答流、选题流、周报流
 
-详见 [08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」](/articles/ai-architecture-thinking-20260610/)
+详见 [08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」](/fuxi-knowledge/articles/ai-architecture-thinking-20260610/)
 
 ### 3. 往回织机制
 
 每次入库走五步：抓原文 → 写摘要 → 更新索引 → 织入 wiki → 记入选题池。其中「织入 wiki」是整套系统与普通笔记的最本质区别。
 
-参见 [07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」](/articles/ai-product-thinking-20260604/) 中关于「找需求先找焦虑」的方法论。
+参见 [07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」](/fuxi-knowledge/articles/ai-product-thinking-20260604/) 中关于「找需求先找焦虑」的方法论。
 
 ## 技术栈选型
 
-四大原则：主流、本地、简单、大众。具体技术选型理由详见 [09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」](/articles/ai-tech-thinking-20260609/)。
+四大原则：主流、本地、简单、大众。具体技术选型理由详见 [09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」](/fuxi-knowledge/articles/ai-tech-thinking-20260609/)。
 
 ### 当前技术栈
 
@@ -57,13 +57,13 @@ zhishi（产品名，最早内部代号 fuxi）是阿 sir 自主研发的个人 
 ## 与写作的融合
 
 zhishi 不是纯技术产品，而是写作工具箱的核心组件。参见：
-- [二狗的幸福生活](/topics/ergou-xilie/) — 写作方法论的落地案例
-- [实践论](/topics/shijianlun/) — 写作的哲学根基
+- [二狗的幸福生活](/fuxi-knowledge/topics/ergou-xilie/) — 写作方法论的落地案例
+- [实践论](/fuxi-knowledge/topics/shijianlun/) — 写作的哲学根基
 - 产品设计文档仅在本地知识库维护，不进入公开站点。
 
 ## 关联
 
-- [为什么 AI 越强，我越要搭自己的知识库](/articles/weihe-yao-da-zhishiku/) — 系列总纲
-- [07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」](/articles/ai-product-thinking-20260604/)
-- [08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」](/articles/ai-architecture-thinking-20260610/)
-- [09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」](/articles/ai-tech-thinking-20260609/)
+- [为什么 AI 越强，我越要搭自己的知识库](/fuxi-knowledge/articles/weihe-yao-da-zhishiku/) — 系列总纲
+- [07.AI 学习之路 · 实战篇之「产品思维：从你天天用的产品里找金矿」](/fuxi-knowledge/articles/ai-product-thinking-20260604/)
+- [08.AI 学习之路 · 实战篇之「架构思维：从一页纸 MVP 到一份 AI 看得懂的架构」](/fuxi-knowledge/articles/ai-architecture-thinking-20260610/)
+- [09.AI 学习之路 · 实战篇之「技术思维：让 AI 帮你选最适合的技术栈」](/fuxi-knowledge/articles/ai-tech-thinking-20260609/)
