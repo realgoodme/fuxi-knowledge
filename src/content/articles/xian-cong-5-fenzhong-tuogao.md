@@ -6,7 +6,7 @@ type: raw
 recovery: rendered-html
 summary: "我们练习口头表达能力，可以先从五分钟脱稿开始练起。不要想着一口气吃成胖子，上来就能侃侃而谈、口若悬河、出口成章，凡事得有个过程。"
 publicOrder: 19
-series: "朴散原创"
+series: "转载"
 ---
 
 # 先从五分钟脱稿练起

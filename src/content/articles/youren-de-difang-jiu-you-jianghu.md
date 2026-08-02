@@ -6,7 +6,7 @@ type: raw
 recovery: rendered-html
 summary: "有人的地方就有江湖，就有闲话。"
 publicOrder: 23
-series: "朴散原创"
+series: "转载"
 ---
 
 # 有人的地方就有江湖

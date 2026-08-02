@@ -6,7 +6,7 @@ type: raw
 recovery: rendered-html
 summary: "提高悟性，我觉得首先是要有开放的心态，不能沉浸在自我的小天地里，不要带着偏见、刻板印象去看问题，这个其实是知易行难的，很多人做不到。"
 publicOrder: 22
-series: "朴散原创"
+series: "转载"
 ---
 
 # 一个人的悟性是如何变强的

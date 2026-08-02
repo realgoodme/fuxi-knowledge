@@ -6,7 +6,7 @@ type: raw
 recovery: rendered-html
 summary: "诗人毕肖普有一句话我很喜欢，\"忘我而无用的专注\"。忘我而无用，多么迷人的表述。忘我是内核，是专注状态的至臻境界。无用是功用，无用之用，是为大用。"
 publicOrder: 18
-series: "朴散原创"
+series: "转载"
 ---
 
 # 忘我而无用的专注
