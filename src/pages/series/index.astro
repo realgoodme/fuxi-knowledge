@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getArticleTopicMap } from "../../utils/relations";
+import { displayTitle } from "../../utils/title";
+const base = import.meta.env.BASE_URL;
+const articles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
+const topicMap = await getArticleTopicMap();
+const seriesGroups = [...new Set(articles.map((entry) => entry.data.series).filter(Boolean))]
+  .map((series) => ({ series, entries: articles.filter((entry) => entry.data.series === series) }))
+  .sort((a, b) => b.entries.length - a.entries.length);
+const total = articles.length;
+---
+
+<BaseLayout title="系列｜朴散的思想仓库">
+  <section class="archive-hero">
+    <p class="eyebrow">THE SERIES</p>
+    <div><h1>系列</h1><p>连续叙事的集合：同一个世界、同一群人，一篇篇写下去。</p></div>
+    <span>{String(seriesGroups.length).padStart(2, "0")} SERIES · {total} ENTRIES</span>
+  </section>
+
+  <section class="archive-section">
+    {seriesGroups.map((group) => (
+      <div class="series-group" data-series={group.series}>
+        <div class="series-group-head">
+          <h2>{group.series}</h2>
+          <span>{group.entries.length} 篇</span>
+        </div>
+        <ul class="series-group-list">
+          {group.entries.map((entry) => {
+            const topic = topicMap.get(entry.id);
+            return (
+              <li>
+                <a href={`${base}articles/${entry.id}/`}>
+                  <strong>{displayTitle(entry.data.title)}</strong>
+                  {topic && <span>主题：{topic.title}</span>}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    ))}
+  </section>
+</BaseLayout>

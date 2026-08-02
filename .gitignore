@@ -13,3 +13,10 @@ site/
 scripts/
 assets/
 reports/
+
+# 知识库工作层（主库在本地，不进公开仓库）
+AGENTS.md
+SCHEMA.md
+ZHISHI-PRODUCT-DESIGN.md
+briefs/
+index.md

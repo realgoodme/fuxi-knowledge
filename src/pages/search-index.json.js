@@ -8,14 +8,22 @@ const base = "/fuxi-knowledge";
 export async function GET() {
   const articles = (await getCollection("articles")).sort((a, b) => (b.data.publicOrder ?? 0) - (a.data.publicOrder ?? 0));
   const topicMap = await getArticleTopicMap();
-  const payload = articles.map((entry) => ({
-    id: entry.id,
-    title: displayTitle(entry.data.title),
-    summary: entry.data.summary ?? "",
-    series: entry.data.series ?? "原创文章",
-    topic: topicMap.get(entry.id)?.title ?? "",
-    date: entryDate(entry)?.toISOString().slice(0, 10) ?? "",
-    url: `${base}/articles/${entry.id}/`,
-  }));
+  const payload = articles.map((entry) => {
+    const body = String(entry.body ?? "")
+      .replace(/[#>*`\[\]()!-]/g, " ")
+      .replace(/\s+/g, " ")
+      .trim()
+      .slice(0, 800);
+    return {
+      id: entry.id,
+      title: displayTitle(entry.data.title),
+      summary: entry.data.summary ?? "",
+      body,
+      series: entry.data.series ?? "原创文章",
+      topic: topicMap.get(entry.id)?.title ?? "",
+      date: entryDate(entry)?.toISOString().slice(0, 10) ?? "",
+      url: `${base}/articles/${entry.id}/`,
+    };
+  });
   return new Response(JSON.stringify(payload), { headers: { "Content-Type": "application/json; charset=utf-8" } });
 }

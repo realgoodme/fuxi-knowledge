@@ -39,7 +39,7 @@ const popularWords = ["协调", "悟性", "AI 学习之路", "知识库"];
       const query = (input?.value ?? "").trim().toLowerCase();
       if (defaultPanel) defaultPanel.style.display = query ? "none" : "";
       if (!query) { results.innerHTML = ""; hint.textContent = "输入后开始筛选；这是纯静态索引，不上传任何内容。"; return; }
-      const matched = index.filter((item) => `${item.title} ${item.summary} ${item.series} ${item.topic}`.toLowerCase().includes(query)).slice(0, 30);
+      const matched = index.filter((item) => `${item.title} ${item.summary} ${item.series} ${item.topic} ${item.body ?? ""}`.toLowerCase().includes(query)).slice(0, 30);
       hint.textContent = `${matched.length} 条结果`;
       results.innerHTML = matched.map((item) => `<a class="search-result" href="${item.url}"><span>${escapeHtml(item.series)}${item.topic ? ` · 主题：${escapeHtml(item.topic)}` : ""}</span><strong>${escapeHtml(item.title)}</strong><em>${escapeHtml(item.summary)}</em><time>${item.date}</time></a>`).join("");
     };
