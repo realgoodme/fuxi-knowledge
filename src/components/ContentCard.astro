@@ -11,7 +11,7 @@ const number = String(index).padStart(2, "0");
 
 <article class:list={["content-card", kind === "topic" && "topic-card"]}>
   <div class="card-kicker">
-    <span>{kind === "topic" ? "主题档案" : entry.data.series ?? "原创文章"}</span>
+    <span>{kind === "topic" ? "主题档案" : (entry.data.series || "未标注")}</span>
     <span>{number}</span>
   </div>
   {kind === "article" && topicTitle && <div class="card-topic">主题：{topicTitle}</div>}
